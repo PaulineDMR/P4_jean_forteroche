@@ -10,7 +10,15 @@ function get_posts()
 	return $resp;
 }
 
-	
+function get_post($post_id)	
+{
+	$db = dbConnect();
+	$resp = $db->prepare("SELECT id, title, content, DATE_FORMAT(post_date, '%d/%m/%Y à %Hh%imin%ss') AS post_date_fr FROM posts WHERE id = ?");
+	$db->execute(array($post_id));
+
+	$post = $db->fetch();
+	return $post;
+}
 
 function dbConnect()
 {

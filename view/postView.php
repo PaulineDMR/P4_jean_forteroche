@@ -9,7 +9,20 @@
 		<p><?= htmlspecialchars($post["post_date_fr"]); ?></p>	
 	</div>
 
-	<h2>Commentaires</h2>
+	<div id="add-comment">
+		<h2>Nouveau commentaire</h2>
+
+		<form method="post" action="index.php?action=comment&amp;id=<?= $post['id'] ?>">
+			<label for="pseudo">Votre pseudo :</label><br>
+			<input type="pseudo" name="pseudo" id="pseudo" placeholder="monPseudo18" required><br>
+			<label for="comment">Votre commentaire :</label><br>
+			<textarea name="comment" id="comment" required></textarea><br>
+			<input type="submit" value="Publier">
+		</form>
+		
+	</div>
+
+	<h2>Commentaires précédents</h2>
 
 	<?php
 		while ($comment = $comments->fetch())

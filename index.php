@@ -2,8 +2,8 @@
 // Routeur
 require('controller/frontend.php');
 
-// chois de l'affichage selon les donnée de l'url
-/*if (isset($_GET["action"])) {
+// choix de l'affichage selon les donnée de l'url
+if (isset($_GET["action"])) {
 	if ($_GET["action"] == "listPosts") {
 		posts_list();
 	}
@@ -18,9 +18,8 @@ require('controller/frontend.php');
 }
 else {
 	posts_list();
-}*/
+}
 
-?>
 
 
 

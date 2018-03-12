@@ -8,6 +8,9 @@
 </head>
 
 <body>
+	<h1>Jean Forteroche<br/>
+	Ecrivain</h1>
+	
 	<?= $page_content ?>
 
 </body>

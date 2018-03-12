@@ -14,7 +14,7 @@ while ($data = $resp->fetch())
 		<h3><?php echo htmlspecialchars($data["title"]); ?></h3>
 		<p><?= nl2br(htmlspecialchars($data["content"])); ?></p>
 		<p><?= htmlspecialchars($data["post_date_fr"]); ?></p>
-		<!-- <a href="../index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a> -->
+		<a href="../index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a>
 	</div>
 	
 <?php

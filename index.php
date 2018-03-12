@@ -1,11 +1,27 @@
 <?php
 // Routeur
-
-// Si certaines données ne sont pas remplies, générer et afficher la page d'accueil du blog
-
 require('controller/frontend.php');
 
-posts_list();
+// chois de l'affichage selon les donnée de l'url
+/*if (isset($_GET["action"])) {
+	if ($_GET["action"] == "listPosts") {
+		posts_list();
+	}
+	elseif ($_GET["action"] == "post") {
+		if (isset($_GET["id"]) && $_GET["id"] > 0) {
+			post_comments();
+		}
+		else {
+			echo 'Erreur : aucun identifiant de billet envoyé';
+		}
+	}
+}
+else {
+	posts_list();
+}*/
 
 ?>
+
+
+
 

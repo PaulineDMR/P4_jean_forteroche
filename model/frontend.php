@@ -28,6 +28,15 @@ function get_comments($post_id)
 	return $comments;
 }
 
+function add_comment($author, $comment, $post_id)
+{
+	$db = dbConnect();
+	$new_comment = $db->prepare("INSERT INTO comments(author, comment, post_id, comment_date) VALUES (?, ?, ?, NOW())");
+	$new_entry = $new_comment->execute(array($author, $comment, $post_id));
+
+    return $new_entry;
+}
+
 function dbConnect()
 {
 	try

@@ -3,16 +3,7 @@
 
 function get_posts()
 {
-	try
-	{
-		$db = new PDO('mysql:host=localhost:8889;dbname=p4jf;charset=utf8', 'root', 'root');
-	}
-	catch (Exception $e)
-	{
-	        die('Erreur : ' . $e->getMessage());
-	}
-
-	// $db = dbConnect();
+	$db = dbConnect();
 
 	$resp = $db->query('SELECT id, title, content, DATE_FORMAT(post_date, "%d/%m/%Y à %Hh%imin%ss") AS post_date_fr FROM posts ORDER BY post_date DESC');
 
@@ -35,20 +26,18 @@ function get_comments($post_id)
 	$comments = $db->prepare("SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS comment_date_fr FROM comments WHERE id = ? ORDER BY comment_date DESC");
 	$comments->execute(array($post_id));
 	return $comments;
-}
+}*/
 
 function dbConnect()
 {
 	try
 	{
 		$db = new PDO('mysql:host=localhost:8889;dbname=p4jf;charset=utf8', 'root', 'root');
-	}
-	catch (Exception $e)
+		return $db;
+	} catch (Exception $e)
 	{
-	        die('Erreur : ' . $e->getMessage());
+	    die('Erreur : ' . $e->getMessage());
 	}
-
-
-}*/
+}
 
 ?>

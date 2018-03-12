@@ -16,3 +16,16 @@ function post_comments()
 	$comments = get_comments($_GET["id"]);
 	require('view/postView.php');
 }
+
+function new_comment($author, $comment, $post_id)
+{
+	$new_entry = add_comment($author, $comment, $post_id);
+	if ($new_entry === false)
+	{
+		die('Impossible d\'ajouter le commentaire !');
+	}
+	else
+	{
+		header('location: index.php?action=post&id=' . $post_id);
+	}
+}

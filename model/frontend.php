@@ -39,12 +39,6 @@ function add_comment($author, $comment, $post_id)
 
 function dbConnect()
 {
-	try
-	{
-		$db = new PDO('mysql:host=localhost:8889;dbname=p4jf;charset=utf8', 'root', 'root');
-		return $db;
-	} catch (Exception $e)
-	{
-	    die('Erreur : ' . $e->getMessage());
-	}
+	$db = new PDO('mysql:host=localhost:8889;dbname=p4jf;charset=utf8', 'root', 'root');
+	return $db;
 }

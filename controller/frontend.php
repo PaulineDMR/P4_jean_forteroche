@@ -22,7 +22,7 @@ function new_comment($author, $comment, $post_id)
 	$new_entry = add_comment($author, $comment, $post_id);
 	if ($new_entry === false)
 	{
-		die('Impossible d\'ajouter le commentaire !');
+		throw new Exception('Impossible d\'ajouter le commentaire !');
 	}
 	else
 	{

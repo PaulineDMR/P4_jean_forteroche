@@ -5,23 +5,48 @@
 
 <p>Dernieres publications :</p>
 
-<?php
-while ($data = $resp->fetch())
-{
+<?php 
+
+/*var_dump($resp);
+echo "<br>";
+echo sizeof($resp);*/
+
+
+for ($index = 0; $index < sizeof($resp); $index++ ) {
 ?>
 
 	<div>
-		<h3><?php echo htmlspecialchars($data["title"]); ?></h3>
-		<p><?= nl2br(htmlspecialchars($data["content"])); ?></p>
-		<p><?= htmlspecialchars($data["post_date_fr"]); ?></p>
-		<a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a>
+		<h3><?= htmlspecialchars($resp["$index"]["title"]); ?></h3>
+		<p><?= nl2br(htmlspecialchars($resp["content"])); ?></p>
+		<p><?= htmlspecialchars($resp["post_date_fr"]); ?></p>
+		<a href="index.php?action=post&amp;id=<?= $resp["id"] ?>">Commentaires</a>
 	</div>
-	
+
 <?php
-}
-$resp->closeCursor();
+
+} 
 ?>
 
-<?php $page_content = ob_get_clean(); ?>
+<!--
+/*foreach ($resp as $key => $value) {
+?>
+	<div>
+		<h3><?php echo htmlspecialchars($resp["title"]); ?></h3>
+		<p><?= nl2br(htmlspecialchars($resp["content"])); ?></p>
+		<p><?= htmlspecialchars($resp["post_date_fr"]); ?></p>
+		<a href="index.php?action=post&amp;id=<?= $resp["id"] ?>">Commentaires</a>
+	</div>
+	
+	-->
 
-<?php require('template.php'); ?>
+<?php
+/*
+
+$resp->closeCursor();
+
+$page_content = ob_get_clean();
+
+require('template.php');
+*/
+
+?>*/

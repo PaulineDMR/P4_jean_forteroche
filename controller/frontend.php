@@ -5,8 +5,8 @@ require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
 function posts_list() {
-	$PostManager = new PostManager();
-	$resp = $PostManager->get_posts();
+	$postManager = new PostManager();
+	$resp = $postManager->get_posts();
 
 	require('view/frontend/indexView.php');
 }
@@ -16,7 +16,7 @@ function post_comments() {
 	$commentManager = new CommentManager();
 
 	$post = $postManager->get_post($_GET["id"]);
-	$comments = $CommentManager->get_comments($_GET["id"]);
+	$comments = $commentManager->get_comments($_GET["id"]);
 	require('view/frontend/postView.php');
 }
 

@@ -8,6 +8,7 @@ class Comment extends Model {
 	private $author;
 	private $comment_date;
 	private $post_id;
+    private $warning;
 
 	/*
 	function __construct(argument)
@@ -53,6 +54,14 @@ class Comment extends Model {
     public function getPost_id()
     {
         return $this->post_id;
+    }
+
+    /**
+     * Return "warning" value ("yes" or "no")
+     * @return [string] $warning
+     */
+    public function getWarning() {
+        return $this->warning;
     }
 
 
@@ -118,6 +127,18 @@ class Comment extends Model {
         return $this;
     }
 
+    /**
+     * @param mixed $warning
+     *
+     * @return self
+     */
+    public function setWarning($warning)
+    {
+        $this->warning = $warning;
+
+        return $this;
+    }
+
 // Comment date Format Function
 
     public function dateFormat() {
@@ -126,4 +147,6 @@ class Comment extends Model {
 
         return $date;
     }
+
+    
 }

@@ -35,3 +35,17 @@ function new_comment($author, $comment, $post_id)
 		header('location: index.php?action=post&id=' . $post_id);
 	}
 }
+
+function comment_warning($post_id, $comment_id) {
+	$commentManager = new CommentManager();
+	$newWarningStatus = $commentManager->updateWarning($comment_id);
+
+	if ($newWarningStatus === false)
+	{
+		throw new Exception('Impossible de signaler le commentaire !');
+	}
+	else
+	{
+		header('location: index.php?action=post&id=' . $post_id);
+	}
+}

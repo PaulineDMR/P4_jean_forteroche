@@ -20,12 +20,21 @@ try {
 			if (isset($_GET["id"]) && $_GET["id"] > 0) {
 				if (!empty($_POST['pseudo']) && !empty($_POST['comment'])) {
 	                new_comment($_POST["pseudo"], $_POST["comment"], $_GET["id"]);
-	            }
-	            else {
+	            } else {
 	                throw new Exception('Tous les champs ne sont pas remplis !');
 	            }
+			} else {
+				throw new Exception('Aucun identifiant de billet envoyé');
 			}
-			else {
+		} 
+		elseif ($_GET["action"] == "warning") {
+			if (isset($_GET["id"]) && $_GET["id"] > 0) {
+				if (isset($_GET["commentId"]) && $_GET["commentId"] > 0) {
+					comment_warning($_GET["id"], $_GET["commentId"]);
+				} else {
+					throw new Exception('Signalement impossible');
+				}	
+			} else {
 				throw new Exception('Aucun identifiant de billet envoyé');
 			}
 		}

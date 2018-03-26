@@ -1,18 +1,22 @@
 <?php $page_title = 'Commentaires'; ?>
 
 <?php ob_start(); ?>
+
+<?php 
+
+?>
 	
 	<a href="index.php?action=listPosts">Retour à la liste des articles</a>
 	<div>
-		<h3><?=  htmlspecialchars($post["title"]); ?></h3>
-		<p><?= nl2br(htmlspecialchars($post["content"])); ?></p>
-		<p><?= htmlspecialchars($post["post_date_fr"]); ?></p>	
+		<h3><?=  htmlspecialchars($post->getTitle()); ?></h3>
+		<p><?= nl2br(htmlspecialchars($post->getContent())); ?></p>
+		<p><?= htmlspecialchars($post->getPost_date()); ?></p>	
 	</div>
 
 	<div id="add-comment">
 		<h2>Nouveau commentaire</h2>
 
-		<form method="post" action="index.php?action=comment&amp;id=<?= $post['id'] ?>">
+		<form method="post" action="index.php?action=comment&amp;id=<?= $post->getId(); ?>">
 			<label for="pseudo">Votre pseudo :</label><br>
 			<input type="pseudo" name="pseudo" id="pseudo" placeholder="monPseudo18" required><br>
 			<label for="comment">Votre commentaire :</label><br>
@@ -25,14 +29,14 @@
 	<h2>Commentaires précédents</h2>
 
 	<?php
-		while ($comment = $comments->fetch())
-		{
+		for ($ix = 0; $ix < sizeof($comments); $ix++) {
 	?>
-			<h4><strong><?= htmlspecialchars($comment["author"]); ?></strong> le <?= htmlspecialchars($comment["comment_date_fr"]); ?></h4>
-			<p><?= nl2br(htmlspecialchars($comment["comment"])); ?></p>
-	<?php		
-		}
-	$comments->closeCursor();
+			<h4><strong><?= htmlspecialchars($comments[$ix]->getAuthor()); ?></strong> le <?= htmlspecialchars($comments[$ix]->getComment_date()); ?></h4>
+			<p><?= nl2br(htmlspecialchars($comments[$ix]->getComment())); ?></p>		
+	<?php 
+		} 
+	
+	//$resp->closeCursor();
 	?>
 
 <?php $page_content = ob_get_clean(); ?>

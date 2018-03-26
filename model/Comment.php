@@ -1,10 +1,8 @@
 <?php
 
-/**
-* 
-*/
-class Comment
-{
+require_once ("Model.php");
+
+class Comment extends Model {
 	private $id;
 	private $comment;
 	private $author;
@@ -45,20 +43,20 @@ class Comment
 	/**
      * @return $comment_date
      */
-    public function getCommentDate()
+    public function getComment_date()
     {
         return $this->comment_date;
     }
 	/**
      * @return $post_id
      */
-    public function getPostId()
+    public function getPost_id()
     {
         return $this->post_id;
     }
 
 
-//SETTER except for $id, $comment_date and $post_id generated automaticaly
+//SETTERS
 
     /**
      * @param mixed $id
@@ -101,7 +99,7 @@ class Comment
      *
      * @return self
      */
-    public function setCommentDate($comment_date)
+    public function setComment_date($comment_date)
     {
         $this->comment_date = $comment_date;
 
@@ -113,10 +111,19 @@ class Comment
      *
      * @return self
      */
-    public function setPostId($post_id)
+    public function setPost_id($post_id)
     {
         $this->post_id = $post_id;
 
         return $this;
+    }
+
+// Comment date Format Function
+
+    public function dateFormat() {
+        $date = new DateTime("$this->comment_date");
+        $date ->format('d/m/Y à H\hi\m');
+
+        return $date;
     }
 }

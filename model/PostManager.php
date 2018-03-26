@@ -26,7 +26,7 @@ class PostManager extends Manager {
 	 */
 	public function get_posts() {
 		$db = $this->dbConnect();
-		$resp = $db->query('SELECT id, title, content, DATE_FORMAT(post_date, "%d/%m/%Y à %Hh%imin%ss") AS post_date_fr FROM posts ORDER BY post_date DESC');
+		$resp = $db->query('SELECT id, title, content, post_date FROM posts ORDER BY post_date DESC');
 
 		$posts = array();
 
@@ -40,10 +40,12 @@ class PostManager extends Manager {
 
 	public function get_post($post_id) {
 		$db = $this->dbConnect();
-		$resp = $db->prepare("SELECT id, title, content, DATE_FORMAT(post_date, '%d/%m/%Y à %Hh%imin%ss') AS post_date_fr FROM posts WHERE id = ?");
+		$resp = $db->prepare("SELECT id, title, content, post_date /*DATE_FORMAT(post_date, '%d/%m/%Y à %Hh%imin%ss') AS post_date_fr*/ FROM posts WHERE id = ?");
 		$resp->execute(array($post_id));
 
-		$post = $resp->fetch();
+		$entry = $resp->fetch();
+		$post = new Post;
+		$post->hydrate($entry);
 		return $post;
 	}
 

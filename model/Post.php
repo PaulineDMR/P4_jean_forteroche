@@ -74,12 +74,45 @@ class Post extends Model {
     /**
      * @return [int]
      */
-    public function getPostDate()
+    public function getPost_date()
     {
         return $this->post_date;
     }
 
-// SETTERS (except for $id et $post_date automaticly generated at creation in DB)
+// SETTERS
+
+    /**
+     * [setId of post function]
+     * @param [int] $id [post id]
+     */
+   public function setId($id)
+    {
+        //if (is_int($id)) {
+            $this->id = $id;
+            return $this;
+
+        //} else {
+            //throw new Exception("L'identifiant de l'article est invalide");
+            
+        //}
+    }
+
+    /**
+     * [setPost_date of post function]
+     * @param [int] $postDate [post creation date]
+     */
+    public function setPost_date($postDate)
+    {
+        //if (is_int("$postDate")) {
+            $this->post_date = $postDate;
+            return $this;
+
+        //} else {
+            //throw new Exception("La date est invalide");
+            
+        //}
+    }
+
 
     /**
      * Title setter

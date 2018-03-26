@@ -17,6 +17,8 @@ function post_comments() {
 
 	$post = $postManager->get_post($_GET["id"]);
 	$comments = $commentManager->get_comments($_GET["id"]);
+	
+
 	require('view/frontend/postView.php');
 }
 

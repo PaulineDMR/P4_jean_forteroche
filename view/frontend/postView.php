@@ -32,7 +32,11 @@
 		for ($ix = 0; $ix < sizeof($comments); $ix++) {
 	?>
 			<h4><strong><?= htmlspecialchars($comments[$ix]->getAuthor()); ?></strong> le <?= htmlspecialchars($comments[$ix]->getComment_date()); ?></h4>
-			<p><?= nl2br(htmlspecialchars($comments[$ix]->getComment())); ?></p>		
+			<p><?= nl2br(htmlspecialchars($comments[$ix]->getComment())); ?></p>
+
+			<form method="post" action="index.php?action=warning&amp;id=<?= $post->getId() ?>&amp;commentId=<?= $comments[$ix]->getId(); ?>">
+				<input type="submit" value="Signaler">
+			</form>		
 	<?php 
 		} 
 	

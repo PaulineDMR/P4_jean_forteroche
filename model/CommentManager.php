@@ -39,6 +39,20 @@ class CommentManager extends Manager {
 	}
 
 // UPDATE comment
+	
+	/**
+	 *Change the status of warning to "yes"
+	 *
+	 *
+	 * 
+	 */
+	public function updateWarning($id) { 
+
+		$db = $this->dbConnect();
+		$resp = $db->exec("UPDATE comments SET warning= 'yes' WHERE id=$id LIMIT 1");
+
+		return $resp;
+	}
 
 // DELETE a comment
 

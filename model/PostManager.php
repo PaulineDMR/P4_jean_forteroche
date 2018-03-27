@@ -21,7 +21,7 @@ class PostManager extends Manager {
 
 
 
-// READ one or all posts from DB
+// READ one or all posts in DB
 
 	/**
 	 * @return [type]

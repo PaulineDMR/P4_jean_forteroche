@@ -39,9 +39,9 @@
 			</form>		
 	<?php 
 		} 
-	
-	//$resp->closeCursor();
 	?>
+	
+	
 
 <?php $page_content = ob_get_clean(); ?>
 

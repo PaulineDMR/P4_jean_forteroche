@@ -6,21 +6,20 @@
 <p>Dernieres publications :</p>
 
 <?php 
-
-for ($index = 0; $index < sizeof($resp); $index++ ) {
+foreach ( $resp AS $value ) {
 ?>
 
 	<div>
-		<h3><?= htmlspecialchars($resp["$index"]->getTitle()); ?></h3>
-		<p><?= nl2br(htmlspecialchars($resp["$index"]->getContent())); ?></p>
-		<p><?= htmlspecialchars($resp["$index"]->getPost_date()); ?></p>
-		<a href="index.php?action=post&amp;id=<?= $resp["$index"]->getId(); ?>">Commentaires</a>
+		<h3><?= htmlspecialchars($value->getTitle()); ?></h3>
+		<p><?= nl2br(htmlspecialchars($value->getContent())); ?></p>
+		<p><?= htmlspecialchars($value->getPost_date()); ?></p>
+		<a href="index.php?action=post&amp;id=<?= $value->getId(); ?>">Commentaires</a>
 	</div>
 
 <?php
 } 
 
-//$resp->closeCursor();
+//
 
 $page_content = ob_get_clean();
 

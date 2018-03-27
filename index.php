@@ -1,6 +1,7 @@
 <?php
 // Routeur
 require('controller/frontend.php');
+require('controller/backend.php');
 
 // choix de l'affichage selon les donnée de l'url
 try {
@@ -37,6 +38,12 @@ try {
 			} else {
 				throw new Exception('Aucun identifiant de billet envoyé');
 			}
+		}
+		elseif ($_GET["action"] == "login") {
+			require('view/backend/loginView.php');
+		}
+		elseif ($_GET["action"] == "authentification") {
+			adminAuthentification($_POST["pseudo"], $_POST["mdp"]);
 		}
 	}
 	else {

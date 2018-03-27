@@ -18,8 +18,13 @@ foreach ( $resp AS $value ) {
 
 <?php
 } 
+?>
 
-//
+	<div>
+		<a href="index.php?action=login">Espace administrateur</a>
+	</div>
+
+<?php
 
 $page_content = ob_get_clean();
 

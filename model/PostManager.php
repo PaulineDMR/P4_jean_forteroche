@@ -14,6 +14,8 @@ class PostManager extends Manager {
 		$insert = $db->prepare("INSERT INTO posts ((id, post_date, title, author, content) VALUES (null, NOW(), ?, null, ?)");
 		$newPost = $insert->execute(array($author, $content));
 
+		$newPost->closeCursor();
+
 	    return $newPost;
 	}
 
@@ -35,6 +37,8 @@ class PostManager extends Manager {
 			$post->hydrate($donnees);
 			$posts[] = $post;
 		}
+
+		$resp->closeCursor();
 		return $posts;
 	}
 
@@ -46,6 +50,8 @@ class PostManager extends Manager {
 		$entry = $resp->fetch();
 		$post = new Post;
 		$post->hydrate($entry);
+
+		$resp->closeCursor();
 		return $post;
 	}
 

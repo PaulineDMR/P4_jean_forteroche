@@ -17,6 +17,8 @@ class CommentManager extends Manager {
 		$new_comment = $db->prepare("INSERT INTO comments(author, comment, post_id, comment_date) VALUES (?, ?, ?, NOW())");
 		$new_entry = $new_comment->execute(array($author, $comment, $post_id));
 
+		$new_entry->closeCursor();
+
 	    return $new_entry;
 	}
 
@@ -35,6 +37,8 @@ class CommentManager extends Manager {
 			$comments[] = $comment;
 		}
 
+		$resp->closeCursor();
+
 		return $comments;
 	}
 
@@ -50,6 +54,8 @@ class CommentManager extends Manager {
 
 		$db = $this->dbConnect();
 		$resp = $db->exec("UPDATE comments SET warning= 'yes' WHERE id=$id LIMIT 1");
+
+		$resp->closeCursor();
 
 		return $resp;
 	}

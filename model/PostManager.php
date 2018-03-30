@@ -11,10 +11,10 @@ class PostManager extends Manager {
 	 */
 	public function add_new_post ($title, $content) {
 		$db = $this->dbConnect();
-		$insert = $db->prepare("INSERT INTO posts ((id, post_date, title, author, content) VALUES (null, NOW(), ?, null, ?)");
-		$newPost = $insert->execute(array($author, $content));
+		$insert = $db->prepare("INSERT INTO posts (post_date, title, content) VALUES (NOW(), ?, ?)");
+		$newPost = $insert->execute(array($title, $content));
 
-		$newPost->closeCursor();
+		$insert->closeCursor();
 
 	    return $newPost;
 	}

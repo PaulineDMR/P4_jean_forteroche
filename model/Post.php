@@ -34,6 +34,8 @@ class Post extends Model {
 	 * @var [int]
 	 */
 	private $post_date;
+    private $publication_date;
+    private $publication_status;
 
 // GETTERS
 
@@ -79,6 +81,22 @@ class Post extends Model {
         return $this->post_date;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPublicationDate()
+    {
+        return $this->publication_date;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublicationStatus()
+    {
+        return $this->publication_status;
+    }
+
 // SETTERS
 
     /**
@@ -112,7 +130,6 @@ class Post extends Model {
             
         //}
     }
-
 
     /**
      * Title setter
@@ -156,7 +173,29 @@ class Post extends Model {
         return $this;
     }
 
-    
+    /**
+     * @param mixed $publication_date
+     *
+     * @return self
+     */
+    public function setPublicationDate($publication_date)
+    {
+        $this->publication_date = $publication_date;
+
+        return $this;
+    }
+
+    /**
+     * @param mixed $publication_status
+     *
+     * @return self
+     */
+    public function setPublicationStatus($publication_status)
+    {
+        $this->publication_status = $publication_status;
+
+        return $this;
+    }
 }
 
 

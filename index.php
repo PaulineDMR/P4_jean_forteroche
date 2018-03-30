@@ -45,6 +45,18 @@ try {
 		elseif ($_GET["action"] == "authentification") {
 			adminAuthentification($_POST["pseudo"], $_POST["mdp"]);
 		}
+		elseif ($_GET["action"] == "writePost") {
+			require('view/backend/writePostView.php');
+		}
+		elseif ($_GET["action"] == "newPost") {
+			if (!empty($_POST["titre"]) && !empty($_POST["contenu"])) {
+				newPost($_POST["titre"], $_POST["contenu"]);
+			} else {
+	            throw new Exception('Tous les champs ne sont pas remplis !');
+	        }
+					
+		}
+
 	}
 	else {
 		posts_list();

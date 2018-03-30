@@ -1,0 +1,128 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	font-family: "Playfair Display", serif;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.todo {
+	background-color: rgba(255, 159, 67,1.0);
+}
+
+/* ESPACE VISITEUR */
+
+
+
+/* ESPACE ADMIN */
+
+	/* HEADER */
+
+#admin-header {
+	height: 300px;
+	background-image: url("img/landscape-2124756_1920.jpg");
+	background-size: cover;
+	background-position: center;
+	display: flex;
+}
+
+#admin-header div {
+	margin: auto;
+	height: 80px;
+	line-height: 80px;
+}
+
+#admin-header h1 {
+	padding: 0 20px;
+	background-color: rgba(223, 230, 233, 0.5);
+	letter-spacing: 0.2em;
+}
+
+#admin-main {
+	max-width: 1500px;
+	margin: 0 auto;
+	display: flex;
+}
+
+	/* INDEX MAIN SECTION */
+
+#admin-main {
+	display: flex;
+}
+
+#main-content {
+	flex: 2;
+
+}
+
+#index-main > div {
+	display: flex;
+	justify-content: space-between;
+}
+
+	/* MENU */
+
+#admin-main nav {
+	width: 300px;
+	border-left: 0.5px solid black;
+	border-right: 0.5px solid black;
+	list-style: none;
+}
+
+#admin-main nav div {
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	font-size: 2em;
+}
+
+#admin-main ul {
+	list-style: none;
+}
+
+.menu-element {
+	font-family: "Old Standard TT", serif;
+	height: 40px;
+	margin: 20px 0;
+	padding-left: 20px;
+	text-transform: uppercase;
+	display: flex;
+	flex-direction: row;
+    align-items: center;
+}
+
+.menu-element:hover {
+	background-color: rgba(189, 197, 129,1.0);
+}
+
+.menu-element p {
+	letter-spacing: 0.2em;
+	font-family: "Old Standard TT", serif;
+}
+
+#menu-element1, #menu-element5, #menu-element6 {
+	margin-left: 10px;
+}
+
+	/* Ecrire un article */
+
+#new-article {
+	width: 80%;
+	margin: 0 auto;
+}
+
+#new-article form {
+	display: flex;
+	flex-direction: column;
+}
+
+
+
+

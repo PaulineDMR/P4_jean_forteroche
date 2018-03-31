@@ -6,6 +6,7 @@
 	<title>Espace administration</title>
 	<link rel="stylesheet" type="text/css" href="view/frontend/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Old+Standard+TT|Playfair+Display" rel="stylesheet">	
+	
 </head>
 
 <body>
@@ -27,7 +28,7 @@
 					<p id="menu-element1">Accueil</p>
 				</li>
 				<li class="menu-element">
-					<p id="menu-element2">Articles</p>
+					<p id="menu-element2"><a href="index.php?action=postAdmin">Articles</a></p>
 				</li>
 				<li class="menu-element">
 					<p id="menu-element3">Commentaires</p>

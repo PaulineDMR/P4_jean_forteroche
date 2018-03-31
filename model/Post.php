@@ -84,7 +84,7 @@ class Post extends Model {
     /**
      * @return mixed
      */
-    public function getPublicationDate()
+    public function getPublication_date()
     {
         return $this->publication_date;
     }
@@ -178,7 +178,7 @@ class Post extends Model {
      *
      * @return self
      */
-    public function setPublicationDate($publication_date)
+    public function setPublication_date($publication_date)
     {
         $this->publication_date = $publication_date;
 

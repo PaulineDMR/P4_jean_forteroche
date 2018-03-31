@@ -1,7 +1,8 @@
 <?php 
 // backend controller
 
-require_once("model/Admin.php");
+require_once('model/PostManager.php');
+require_once('model/CommentManager.php');
 require_once("model/AdminManager.php");
 
 function adminAuthentification($login, $password) {
@@ -18,7 +19,7 @@ function adminAuthentification($login, $password) {
 	}
 }
 
-function newPost ($title, $content) {
+function newPost($title, $content) {
 	$postManager = new PostManager();
 	$newPost = $postManager->add_new_post($title, $content);
 
@@ -31,5 +32,24 @@ function newPost ($title, $content) {
 	}
 
 }
+
+function publishedPosts() {
+	$postManager = new PostManager();
+	$publishedPosts = $postManager->get_posts();
+	$nonPublishedPosts = $postManager->get_nonPublishedPosts();
+
+	require("view/backend/postAdminView.php");
+}
+
+function edit_post($id) {
+	$postManager = new PostManager();
+	$post = $postManager->get_post($id);
+
+	$title = $post->getTitle();
+	$content = $post->getContent();
+
+	require("view/backend/writePostView.php");
+}
+
 
 

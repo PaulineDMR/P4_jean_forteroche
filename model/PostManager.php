@@ -28,7 +28,7 @@ class PostManager extends Manager {
 	 */
 	public function get_posts() {
 		$db = $this->dbConnect();
-		$resp = $db->query('SELECT id, title, content, post_date FROM posts ORDER BY post_date DESC');
+		$resp = $db->query('SELECT id, title, content, post_date, publication_date FROM posts WHERE publication_status = "yes" ORDER BY post_date DESC');
 
 		$posts = array();
 
@@ -53,6 +53,22 @@ class PostManager extends Manager {
 
 		$resp->closeCursor();
 		return $post;
+	}
+
+	public function get_nonPublishedPosts () {
+		$db = $this->dbConnect();
+		$resp = $db->query('SELECT id, post_date, title, content, publication_date FROM posts WHERE publication_status = "no" ORDER BY publication_date DESC');
+
+		$posts = array();
+
+		while ($donnees = $resp->fetch()) {
+			$post = new Post();
+			$post->hydrate($donnees);
+			$posts[] = $post;
+		}
+
+		$resp->closeCursor();
+		return $posts;
 	}
 
 // UPDATE a post in DB

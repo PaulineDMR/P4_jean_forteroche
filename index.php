@@ -5,11 +5,13 @@ require('controller/backend.php');
 
 // choix de l'affichage selon les donnée de l'url
 try {
-	if (isset($_GET["action"])) {
+	// Display the index page of the blog
+	if (isset($_GET["action"])) { 
 		if ($_GET["action"] == "listPosts") {
 			posts_list();
 		}
-		elseif ($_GET["action"] == "post") {
+		// Display the page of one post - Frontend
+		elseif ($_GET["action"] == "post") { 
 			if (isset($_GET["id"]) && $_GET["id"] > 0) {
 				post_comments();
 			}
@@ -17,7 +19,8 @@ try {
 				throw new Exception('Aucun identifiant de billet envoyé');
 			}
 		}
-		elseif ($_GET["action"] == "comment") {
+		// Create and add a new comment and display the page of one poste - Front
+		elseif ($_GET["action"] == "comment") { 
 			if (isset($_GET["id"]) && $_GET["id"] > 0) {
 				if (!empty($_POST['pseudo']) && !empty($_POST['comment'])) {
 	                new_comment($_POST["pseudo"], $_POST["comment"], $_GET["id"]);
@@ -28,6 +31,7 @@ try {
 				throw new Exception('Aucun identifiant de billet envoyé');
 			}
 		} 
+		// Create a comment warning and display the the page of one post - Front
 		elseif ($_GET["action"] == "warning") {
 			if (isset($_GET["id"]) && $_GET["id"] > 0) {
 				if (isset($_GET["commentId"]) && $_GET["commentId"] > 0) {
@@ -39,22 +43,39 @@ try {
 				throw new Exception('Aucun identifiant de billet envoyé');
 			}
 		}
+		// Display the login page
 		elseif ($_GET["action"] == "login") {
 			require('view/backend/loginView.php');
 		}
+		// Display the index page of backoffice
 		elseif ($_GET["action"] == "authentification") {
 			adminAuthentification($_POST["pseudo"], $_POST["mdp"]);
 		}
+		// Dispaly the post edit page or the write post page
 		elseif ($_GET["action"] == "writePost") {
-			require('view/backend/writePostView.php');
+			if (isset($_GET["id"])) {
+				edit_post($_GET["id"]);
+			} else {
+				$title = " ";
+				$content = "Ecrivez votre texte ici";
+
+				require('view/backend/writePostView.php');
+			}		
 		}
+		// Creat a new post in DB and Display the admin posts page - backoffice
 		elseif ($_GET["action"] == "newPost") {
 			if (!empty($_POST["titre"]) && !empty($_POST["contenu"])) {
-				newPost($_POST["titre"], $_POST["contenu"]);
+				newPost($_POST["titre"], ($_POST["contenu"]));
+
 			} else {
 	            throw new Exception('Tous les champs ne sont pas remplis !');
-	        }
-					
+	        }			
+		}
+		// Display the admin posts page - backoffice
+		elseif ($_GET["action"] == "postAdmin") {
+			publishedPosts();
+
+
 		}
 
 	}

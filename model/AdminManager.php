@@ -1,5 +1,6 @@
 <?php 
 require_once("Manager.php");
+require_once("Admin.php");
 
 class AdminManager extends Manager {
 

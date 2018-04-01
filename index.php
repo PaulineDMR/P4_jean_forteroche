@@ -58,6 +58,8 @@ try {
 			} else {
 				$title = " ";
 				$content = "Ecrivez votre texte ici";
+				$action ="writePost";
+				$submit ="Créer";
 
 				require('view/backend/writePostView.php');
 			}		
@@ -74,8 +76,15 @@ try {
 		// Display the admin posts page - backoffice
 		elseif ($_GET["action"] == "postAdmin") {
 			publishedPosts();
-
-
+		}
+		// Update a post and display the admin post page - back
+		elseif ($_GET["action"] == "updatePost") {
+			if (isset($_GET["id"])) {
+				updatePost($_GET["id"], $_POST["titre"], $_POST["contenu"]);
+			} else {
+				throw new Exception("Aucun identifiant de billet envoyé");
+				
+			}	
 		}
 
 	}

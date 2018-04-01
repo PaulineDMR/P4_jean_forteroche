@@ -6,17 +6,13 @@ ob_start();
 	<div id="new-article">
 		<h2>Nouvel Article</h2>
 
-<!-- <body>
-  <textarea>Next, start a free trial!</textarea>
-</body> -->
 		<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
   		<script>tinymce.init({ selector:'textarea' });</script>
 
-
-		<form method="post" action="index.php?action=newPost">
-			<label for="titre"></label><input type="text" name="titre" id="titre" required value="<?= $title ?>">
-			<textarea id="contenu" name="contenu" required><?= $content ?></textarea>
-			<input type="submit" value="Créer">
+		<form method="post" action="index.php?action=<?= $action ?>&amp;id=<?= $postId ?>">
+			<label for="titre"></label><input type="text" name="titre" id="titre" value="<?= $title ?>" required>
+			<textarea id="contenu" name="contenu"s required><?= $content ?></textarea>
+			<input type="submit" value="<?= $submit ?>">
 		</form>
 
 	</div>

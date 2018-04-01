@@ -47,8 +47,24 @@ function edit_post($id) {
 
 	$title = $post->getTitle();
 	$content = $post->getContent();
+	$postId = $post->getId();
+	$action = "updatePost";
+	$submit = "Enregistrer";
 
 	require("view/backend/writePostView.php");
+}
+
+function updatePost($id, $title, $content) {
+	$postManager = new PostManager();
+	$postUpdated = $postManager->update_post($id, $title, $content);
+
+	if ($postUpdated === false)
+	{
+		throw new Exception('Impossible de modifier l\'article !');
+	}
+	else {
+		header('location: index.php?action=postAdmin');
+	}
 }
 
 

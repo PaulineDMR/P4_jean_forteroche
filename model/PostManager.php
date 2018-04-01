@@ -44,7 +44,7 @@ class PostManager extends Manager {
 
 	public function get_post($post_id) {
 		$db = $this->dbConnect();
-		$resp = $db->prepare("SELECT id, title, content, post_date /*DATE_FORMAT(post_date, '%d/%m/%Y à %Hh%imin%ss') AS post_date_fr*/ FROM posts WHERE id = ?");
+		$resp = $db->prepare("SELECT id, title, content, post_date FROM posts WHERE id = ?");
 		$resp->execute(array($post_id));
 
 		$entry = $resp->fetch();
@@ -72,6 +72,16 @@ class PostManager extends Manager {
 	}
 
 // UPDATE a post in DB
+	public function update_post($id, $title, $content) {
+		$db = $this->dbConnect();
+		$resp = $db->prepare("UPDATE posts SET title=?, content=? WHERE id=$id LIMIT 1");
+
+		$postUpdated = $resp->execute(array($title, $content));
+
+		$resp->closeCursor();
+
+		return $postUpdated;
+	}
 
 
 

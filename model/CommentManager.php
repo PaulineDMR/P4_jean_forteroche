@@ -17,7 +17,7 @@ class CommentManager extends Manager {
 		$new_comment = $db->prepare("INSERT INTO comments(author, comment, post_id, comment_date) VALUES (?, ?, ?, NOW())");
 		$new_entry = $new_comment->execute(array($author, $comment, $post_id));
 
-		$new_entry->closeCursor();
+		$new_comment->closeCursor();
 
 	    return $new_entry;
 	}
@@ -45,7 +45,7 @@ class CommentManager extends Manager {
 // UPDATE comment
 	
 	/**
-	 *Change the status of warning to "yes"
+	 *Change the status of warning to TRUE
 	 *
 	 *
 	 * 
@@ -53,7 +53,7 @@ class CommentManager extends Manager {
 	public function updateWarning($id) { 
 
 		$db = $this->dbConnect();
-		$resp = $db->exec("UPDATE comments SET warning= 'yes' WHERE id=$id LIMIT 1");
+		$resp = $db->exec("UPDATE comments SET warning= TRUE WHERE id=$id LIMIT 1");
 
 		$resp->closeCursor();
 

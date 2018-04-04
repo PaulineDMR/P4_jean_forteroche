@@ -9,7 +9,7 @@ ob_start();
 		<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
   		<script>tinymce.init({ selector:'textarea' });</script>
 
-		<form method="post" action="index.php?action=<?= $action ?>&amp;id=<?= $postId ?>">
+		<form method="post" action="index.php?<?= $url ?>">
 			<label for="titre"></label><input type="text" name="titre" id="titre" value="<?= $title ?>" required>
 			<textarea id="contenu" name="contenu"s required><?= $content ?></textarea>
 			<input type="submit" value="<?= $submit ?>">

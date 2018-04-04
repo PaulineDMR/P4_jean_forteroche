@@ -14,7 +14,8 @@ function adminAuthentification($login, $password) {
 			$name = $value->getName();
 			require("view/backend/adminView.php");
 		} else {
-			throw new Exception("Identifiant ou mot de passe incorect, veuillez recommencer");
+			$errorLoginMessage = "<p>Votre pseudo ou votre de mot de passe est incorrect, à nouveau saississez vos identifiants</p>";
+			require("view/backend/loginView.php");
 		}
 	}
 }
@@ -47,8 +48,7 @@ function edit_post($id) {
 
 	$title = $post->getTitle();
 	$content = $post->getContent();
-	$postId = $post->getId();
-	$action = "updatePost";
+	$url = "action=updatePost&amp;id=" .$post->getId();
 	$submit = "Enregistrer";
 
 	require("view/backend/writePostView.php");

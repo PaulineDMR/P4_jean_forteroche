@@ -12,6 +12,10 @@
 		<p>Veuillez vous identifier</p>
 	</div>
 
+	<div>
+		<?= $errorLoginMessage ?>
+	</div>
+
 	<form action="index.php?action=authentification " method="POST">
 		<label for="pseudo">Pseudo : <input type="pseudo" name="pseudo" id="pseudo" maxlength="20" required>
 		</label>

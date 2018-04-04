@@ -28,7 +28,7 @@ class PostManager extends Manager {
 	 */
 	public function get_posts() {
 		$db = $this->dbConnect();
-		$resp = $db->query('SELECT id, title, content, post_date, publication_date FROM posts WHERE publication_status = "yes" ORDER BY post_date DESC');
+		$resp = $db->query('SELECT id, title, content, post_date, publication_date FROM posts WHERE publication_status = TRUE ORDER BY post_date DESC LIMIT 5');
 
 		$posts = array();
 
@@ -57,7 +57,7 @@ class PostManager extends Manager {
 
 	public function get_nonPublishedPosts () {
 		$db = $this->dbConnect();
-		$resp = $db->query('SELECT id, post_date, title, content, publication_date FROM posts WHERE publication_status = "no" ORDER BY publication_date DESC');
+		$resp = $db->query('SELECT id, post_date, title, content, publication_date FROM posts WHERE publication_status = "false" ORDER BY publication_date DESC');
 
 		$posts = array();
 

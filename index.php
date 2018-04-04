@@ -23,7 +23,7 @@ try {
 		elseif ($_GET["action"] == "comment") { 
 			if (isset($_GET["id"]) && $_GET["id"] > 0) {
 				if (!empty($_POST['pseudo']) && !empty($_POST['comment'])) {
-	                new_comment($_POST["pseudo"], $_POST["comment"], $_GET["id"]);
+	                new_comment(htmlspecialchars($_POST["pseudo"]), htmlspecialchars($_POST["comment"]), $_GET["id"]);
 	            } else {
 	                throw new Exception('Tous les champs ne sont pas remplis !');
 	            }
@@ -45,6 +45,7 @@ try {
 		}
 		// Display the login page
 		elseif ($_GET["action"] == "login") {
+			$errorLoginMessage = "";
 			require('view/backend/loginView.php');
 		}
 		// Display the index page of backoffice
@@ -58,7 +59,7 @@ try {
 			} else {
 				$title = " ";
 				$content = "Ecrivez votre texte ici";
-				$action ="writePost";
+				$url = "action=newPost";
 				$submit ="Créer";
 
 				require('view/backend/writePostView.php');
@@ -67,7 +68,7 @@ try {
 		// Creat a new post in DB and Display the admin posts page - backoffice
 		elseif ($_GET["action"] == "newPost") {
 			if (!empty($_POST["titre"]) && !empty($_POST["contenu"])) {
-				newPost($_POST["titre"], ($_POST["contenu"]));
+				newPost(htmlspecialchars($_POST["titre"]), htmlspecialchars($_POST["contenu"]));
 
 			} else {
 	            throw new Exception('Tous les champs ne sont pas remplis !');
@@ -80,7 +81,7 @@ try {
 		// Update a post and display the admin post page - back
 		elseif ($_GET["action"] == "updatePost") {
 			if (isset($_GET["id"])) {
-				updatePost($_GET["id"], $_POST["titre"], $_POST["contenu"]);
+				updatePost($_GET["id"], htmlspecialchars_decode($_POST["titre"]), htmlspecialchars_decode($_POST["contenu"]));
 			} else {
 				throw new Exception("Aucun identifiant de billet envoyé");
 				

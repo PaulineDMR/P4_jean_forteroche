@@ -57,7 +57,7 @@ class Comment extends Model {
     }
 
     /**
-     * Return "warning" value ("yes" or "no")
+     * Return "warning" value (TRUE or FALSE)
      * @return [string] $warning
      */
     public function getWarning() {

@@ -28,7 +28,7 @@ class PostManager extends Manager {
 	 */
 	public function get_posts() {
 		$db = $this->dbConnect();
-		$resp = $db->query('SELECT id, title, content, post_date, publication_date FROM posts WHERE publication_status = TRUE ORDER BY post_date DESC LIMIT 5');
+		$resp = $db->query('SELECT id, title, content, post_date, publication_date FROM posts WHERE publication_status = TRUE ORDER BY publication_date DESC');
 
 		$posts = array();
 

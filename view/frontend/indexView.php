@@ -32,6 +32,24 @@ foreach ( $resp AS $value ) {
 } 
 ?>
 	</div>
+
+	<div id="pagination">
+		<ul>
+			<?php
+				for ($page = 1; $page < $numberOfPages; $page++) {
+			?>
+					<li>
+						<p><a href="index.php,action=listPosts&amp;page=<?= $page; ?>"><?= $page; ?></a>, </p>
+					</li>
+			<?php 
+				}	
+			?>
+				<li>
+					<p><a href="index.php,action=listPosts&amp;page=<?= $page; ?>"><?= $page; ?></a></p>
+				</li>
+		</ul>
+		
+	</div>
 	<div>
 		<a href="index.php?action=login">Espace administrateur</a>
 	</div>

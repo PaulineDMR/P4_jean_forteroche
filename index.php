@@ -8,7 +8,12 @@ try {
 	// Display the index page of the blog
 	if (isset($_GET["action"])) { 
 		if ($_GET["action"] == "listPosts") {
-			posts_list();
+			if (isset($_GET["page"]) && is_numeric($_GET["page"])) {
+				posts_list(5, $_GET["page"]);
+			} else {
+				$pageNumber = 1;
+				posts_list(5, $pageNumber);
+			}
 		}
 		// Display the page of one post - Frontend
 		elseif ($_GET["action"] == "post") { 
@@ -90,7 +95,8 @@ try {
 
 	}
 	else {
-		posts_list();
+		$pageNumber = 1;
+		posts_list(5, $pageNumber);
 	}
 }
 catch(Exception $e) {

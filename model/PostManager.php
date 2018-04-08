@@ -57,7 +57,7 @@ class PostManager extends Manager {
 
 	public function get_nonPublishedPosts () {
 		$db = $this->dbConnect();
-		$resp = $db->query('SELECT id, post_date, title, content, publication_date FROM posts WHERE publication_status = "false" ORDER BY publication_date DESC');
+		$resp = $db->query('SELECT id, post_date, title, content, publication_date FROM posts WHERE publication_status = FALSE ORDER BY publication_date DESC');
 
 		$posts = array();
 
@@ -67,6 +67,36 @@ class PostManager extends Manager {
 			$posts[] = $post;
 		}
 
+		$resp->closeCursor();
+		return $posts;
+	}
+
+	public function countPages($postsPerPage) {
+		$db = $this->dbConnect();
+		$resp = $db->query('SELECT id FROM posts WHERE publication_status = TRUE');
+		$numberOfPosts = $resp->rowCount();
+		$numberOfPages = ceil($numberOfPosts / $postsPerPage);
+
+		$resp->closeCursor();
+		return $numberOfPages;
+	}
+
+	public function pager($firstIndex, $postsPerPage) {
+		$db = $this->dbConnect();
+		$resp = $db->prepare('SELECT id, title, content, publication_date FROM posts WHERE publication_status = TRUE ORDER BY publication_date DESC LIMIT :firstIndex, :postsPerPage');
+		
+		$resp->bindValue('firstIndex', $firstIndex, PDO::PARAM_INT);
+		$resp->bindValue('postsPerPage', $postsPerPage, PDO::PARAM_INT);
+		$resp->execute();
+
+		$posts = array();
+
+		while ($data = $resp->fetch()) {
+			$post = new Post;
+			$post->hydrate($data);
+			$posts[] = $post;
+		}
+		
 		$resp->closeCursor();
 		return $posts;
 	}
@@ -81,6 +111,10 @@ class PostManager extends Manager {
 		$resp->closeCursor();
 
 		return $postUpdated;
+	}
+
+	public function postPublication($postId) {
+		
 	}
 
 

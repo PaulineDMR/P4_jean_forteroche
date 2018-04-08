@@ -4,11 +4,21 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
-function posts_list() {
+function posts_list($postsPerPage, $page) {
 	$postManager = new PostManager();
-	$resp = $postManager->get_posts();
+	$numberOfPages = $postManager->countPages($postsPerPage);
 
-	require('view/frontend/indexView.php');
+	$pageNumber = $page;
+
+	if ($pageNumber > $numberOfPages) {
+		$pageNumber = $numberOfPages;
+	}
+
+	$firstIndex = ($pageNumber - 1) * $postsPerPage;
+
+	$resp = $postManager->pager($firstIndex, $postsPerPage);
+	
+	require('view/frontend/indexView.php');	
 }
 
 function post_comments() {

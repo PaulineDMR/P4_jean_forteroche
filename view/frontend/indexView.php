@@ -32,6 +32,52 @@ foreach ( $resp AS $value ) {
 } 
 ?>
 	</div>
+
+	<div id="pagination">
+		<ul>
+			<?php
+				for ($page = 1; $page < $numberOfPages; $page++) {
+					if (isset($_GET["page"]) && $page == $_GET["page"]) {
+					?>
+						<li>
+							<p><span id="pageActuelle"><?= $page; ?></span> - </p>
+						</li>
+					<?php  
+					} elseif (!isset($_GET["page"]) && $page == 1) { 
+					?>
+						<li>
+							<p><span id="pageActuelle"><?= $page; ?></span> - </p>
+						</li>
+					<?php   
+					} else {
+					?>
+						<li>
+							<p><a href="index.php?action=listPosts&amp;page=<?= $page; ?>"><?= $page; ?></a> - </p>
+						</li>
+					<?php 
+					}	
+					?>
+				<?php 
+				}
+
+				if (isset($_GET["page"]) && $page == $_GET["page"]) {
+				?>
+					<li>
+						<p><span id="pageActuelle"><?= $page; ?></span></p>
+					</li>
+				<?php
+				} else {
+				?>
+					<li>
+						<p><a href="index.php?action=listPosts&amp;page=<?= $page; ?>"><?= $page; ?></a></p>
+					</li>
+				<?php
+				}  	
+				?>
+				
+		</ul>
+		
+	</div>
 	<div>
 		<a href="index.php?action=login">Espace administrateur</a>
 	</div>

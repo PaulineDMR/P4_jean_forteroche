@@ -166,7 +166,6 @@ a {
 	background-color: white;
 	border-radius: 5px 5px 5px 5px;
 	padding: 10px 10px;
-	
 }
 
 .post-excerpt-container h3 {
@@ -202,7 +201,26 @@ a {
 	font-family: 'Roboto', sans-serif;
 }
 
+#pagination ul {
+	list-style: none;
+	text-align: center;
+	font-size: 1.4em;
+}
 
+#pagination ul li{
+	display: inline;
+}
+
+#pagination ul li p {
+	display: inline;
+}
+
+#pageActuelle {
+	background-color: #f1f2f6;
+	border-radius: 5px 5px 5px 5px;
+	padding-left: 3px;
+	padding-right: 3px;
+}
 
 	/* Page épisode avec ses commentaires */
 
@@ -264,7 +282,6 @@ a {
 #post h3 {
 	font-family: 'Oswald', sans-serif;
 	font-size: 1.6em;
-
 }
 
 #post p:nth-child(2) {

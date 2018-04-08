@@ -114,7 +114,6 @@ class PostManager extends Manager {
 	}
 
 	public function postPublication($postId) {
-<<<<<<< HEAD
 		$db = $this->dbConnect();
 		$resp = $db->prepare("UPDATE posts SET publication_status = :status, publication_date = NOW() WHERE id = :postId LIMIT 1");
 		$resp->bindValue(status, TRUE, PDO::PARAM_STR);
@@ -124,9 +123,6 @@ class PostManager extends Manager {
 		$resp->closeCursor();
 
 		return $postPublished;
-=======
-		
->>>>>>> pagination
 	}
 
 

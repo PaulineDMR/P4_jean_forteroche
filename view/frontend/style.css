@@ -17,13 +17,15 @@ a {
 	background-color: rgba(255, 159, 67,1.0);
 }
 
-/* ESPACE VISITEUR */
-
-
-
-/* ESPACE ADMIN */
-
 	/* HEADER */
+
+#reader-banner {
+	height: 300px;
+	background-image: url("img/talkeetna-1624101_1920.jpg");
+	background-size: cover;
+	background-position: center center;
+	display: flex;
+}
 
 #admin-header {
 	height: 300px;
@@ -33,48 +35,81 @@ a {
 	display: flex;
 }
 
-#admin-header div {
+#reader-banner p {
+	font-size: 2.5em;
+}
+
+#admin-header div, #reader-banner p {
 	margin: auto;
 	height: 80px;
 	line-height: 80px;
 }
 
-#admin-header h1 {
+#admin-header h1, #reader-banner p {
 	padding: 0 20px;
 	background-color: rgba(223, 230, 233, 0.5);
 	letter-spacing: 0.2em;
 }
 
-#admin-main {
+	/* MAIN */
+
+#admin-main, #reader-main {
 	max-width: 1500px;
 	margin: 0 auto;
 	display: flex;
 }
 
-	/* INDEX MAIN SECTION */
-
-#admin-main {
-	display: flex;
-}
-
 #main-content {
 	flex: 2;
-
+	background-color: #CAD3C8;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
+	/* INDEX MAIN SECTION */
 
 #index-main > div {
 	display: flex;
 	justify-content: space-between;
 }
 
-	/* MENU */
+#admin-main {
+	display: flex;
+}
 
-#admin-main nav {
+	/* ASIDE */
+
+#admin-main nav, #reader-main aside {
 	width: 300px;
-	border-left: 0.5px solid black;
-	border-right: 0.5px solid black;
 	list-style: none;
 }
+
+	/* INDEX ASIDE */
+
+#reader-main aside {
+	padding: 20px 15px 60px 5px;
+	text-align: justify;
+}
+
+#reader-main aside h1 {
+	font-size: 2.3em;
+	margin-bottom: 10px;
+}
+
+#reader-main aside p {
+	letter-spacing: 1.1px;
+	font-size: 1.1em;
+	margin-bottom: 10px;
+	font-family: Arialnarrow;
+	line-height: 24px;
+}
+
+#reader-main aside h2 {
+	letter-spacing: 1.2px;
+	font-size: 1.3em;
+	margin-bottom: 10px;
+}
+
+	/* ADMIN MENU */
 
 #admin-main nav div {
 	text-align: center;
@@ -111,6 +146,196 @@ a {
 	margin-left: 10px;
 }
 
+	/* Liste des derniers posts publiés */
+
+#posts > p {
+	background-color: #CAD3C8;
+	line-height: 40px;
+	font-family: "Old Standard TT", serif;
+	font-size: 1.8em;
+	text-align: center;
+}
+
+.post-excerpt-container {
+	width: 70%;
+	display: flex;
+	justify-content: space-between;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	background-color: white;
+	border-radius: 5px 5px 5px 5px;
+	padding: 10px 10px;
+	
+}
+
+.post-excerpt-container h3 {
+	margin-bottom: 5px;
+	font-size: 1.4em;
+}
+
+ .post-excerpt-container p {
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.1em;
+}
+
+.post-excerpt {
+	max-height: 65px;
+	overflow: auto;
+	text-overflow: ellipsis;
+	padding-bottom: 5px;
+}
+
+.comment-link {
+	line-height: 52px;
+	margin-right: 20px;
+	width: 200px;
+}
+
+.comment-link p, .comment-link img {
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.comment-link p {
+	margin-left: 15px;
+	font-family: 'Roboto', sans-serif;
+}
+
+
+
+	/* Page épisode avec ses commentaires */
+
+#post-container {
+	width: 70%;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	background-color: white;
+	border-radius: 5px 5px 5px 5px;
+	padding: 10px 10px;
+	font-family: 'Playfair Display', serif;
+}
+
+#post-container h2 {
+	font-family: 'Roboto', sans-serif;
+	border-bottom: 1.5px solid #BDC581;
+	margin-bottom: 15px;
+}
+
+#post-container img {
+	height: 30px;
+	width: 30px;
+}
+
+#post-container div:nth-child(2) {
+	margin: auto;
+	width: 25%;
+	text-align: center;
+}
+
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+	background-color:#ffffff;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	font-family: 'Roboto', sans-serif;
+	font-size:15px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+	background-color:#f6f6f6;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+#post {
+	margin-bottom: 30px;
+}
+
+#post h3 {
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.6em;
+
+}
+
+#post p:nth-child(2) {
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.2em;
+	margin-bottom: 15px;
+}
+
+#post p{
+	font-size: 1.2em;
+	letter-spacing: 1.4px;
+}
+
+	/* Ecrire un commentaire */
+
+#add-comment {
+	margin-bottom: 30px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.comment-form {
+	border: 1px solid #dcdcdc !important;
+	font-family: Arial;
+	font-size: 14px;
+	color: grey;
+}
+
+#pseudo {
+	height: 20px;
+	width: 150px;
+}
+
+#comment {
+	width: 100%;
+	height: 100px;	
+}
+
+	/* Listes des commentaires */
+
+#comment-container {
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #F5F5F5;
+}
+
+#comment-container h4 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: inherit;
+	color: #8F97A1;
+}
+
+#comment-container h4 span {
+	color: #58B19F;
+	font-weight: bold;
+}
+
+#comment-container p {
+	font-family: Arialnarrow;
+	font-size: 1.05em;
+	width: 70%;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	border-left: 1px solid #58B19F;
+}
+
+#comment-container input {
+
+}
+
 	/* Ecrire un article */
 
 #new-article {
@@ -123,6 +348,11 @@ a {
 	flex-direction: column;
 }
 
+	/* FOOTER */
 
+#index-footer {
+	height: 200px;
+	background-color: #2C3A47;
+}
 
 

@@ -5,43 +5,76 @@
 <?php 
 
 ?>
-	
-	<a href="index.php?action=listPosts">Retour à la liste des articles</a>
-	<div>
-		<h3><?=  htmlspecialchars($post->getTitle()); ?></h3>
-		<p><?= nl2br(htmlspecialchars($post->getContent())); ?></p>
-		<p><?= htmlspecialchars($post->getPost_date()); ?></p>	
-	</div>
-
-	<div id="add-comment">
-		<h2>Nouveau commentaire</h2>
-
-		<form method="post" action="index.php?action=comment&amp;id=<?= $post->getId(); ?>">
-			<label for="pseudo">Votre pseudo :</label><br>
-			<input type="pseudo" name="pseudo" id="pseudo" placeholder="monPseudo18" required><br>
-			<label for="comment">Votre commentaire :</label><br>
-			<textarea name="comment" id="comment" required></textarea><br>
-			<input type="submit" value="Publier">
-		</form>
+	<div id="post-container">
 		
-	</div>
+		<div id="post">
+			<h3><?=  htmlspecialchars($post->getTitle()); ?></h3>
+			<p>
+				<?php
+					$date = htmlspecialchars($post->getPost_date());
+					$date_fr = new DateTime($date);
+					echo "Publié le " .$date_fr->format('d-m-Y');
+				?>
+			</p>	
+			<p><?= nl2br(htmlspecialchars_decode($post->getContent())); ?></p>
+			
+		</div>
 
-	<h2>Commentaires précédents</h2>
+		<div>
+			<a class="myButton" href="index.php?action=listPosts">Retour</a>
+		</div>
+
+		<div id="add-comment">
+			<img src="view/frontend/img/chat.svg" alt="chat icon">
+			<h2>Laissez un commentaire</h2>
+
+			<form method="post" action="index.php?action=comment&amp;id=<?= $post->getId(); ?>">
+				<label for="pseudo">Votre pseudo : <input class="comment-form" type="pseudo" name="pseudo" id="pseudo" placeholder="monPseudo18" required></label><br>
+				<br>
+				<label for="comment">Votre commentaire :</label><br>
+				<textarea class="comment-form" name="comment" id="comment" required></textarea><br>
+				<input type="submit" value="Publier">
+			</form>
+			
+		</div>
+
+
+
+		<h2>Commentaires précédents</h2>
 
 	<?php
 		for ($ix = 0; $ix < sizeof($comments); $ix++) {
 	?>
-			<h4><strong><?= htmlspecialchars($comments[$ix]->getAuthor()); ?></strong> le <?= htmlspecialchars($comments[$ix]->getComment_date()); ?></h4>
-			<p><?= nl2br(htmlspecialchars($comments[$ix]->getComment())); ?></p>
+
+		<div id="comment-container">
+			<h4>
+				<?php
+					$date = htmlspecialchars($comments[$ix]->getComment_date());
+					$date_fr = new DateTime($date);
+					echo "Le " .$date_fr->format('d-m-Y à H\hi'). " <span>" .htmlspecialchars($comments[$ix]->getAuthor()). "</span> a écrit";
+				?>
+			</h4>
+
+			<p><?= nl2br(htmlspecialchars_decode($comments[$ix]->getComment())); ?></p>
 
 			<form method="post" action="index.php?action=warning&amp;id=<?= $post->getId() ?>&amp;commentId=<?= $comments[$ix]->getId(); ?>">
 				<input type="submit" value="Signaler">
-			</form>		
+			</form>	
+		</div>
+
+<?php
+							
+					?>	
+
+
+
+
+
 	<?php 
 		} 
 	?>
 	
-	
+	</div>
 
 <?php $page_content = ob_get_clean(); ?>
 

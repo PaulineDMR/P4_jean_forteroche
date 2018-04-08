@@ -45,8 +45,8 @@ ob_start();
 					<td><?= $value->getTitle(); ?></td>
 					<td><?= $value->getPost_date(); ?></td>
 					<td><a href="index.php?action=writePost&amp;id=<?= $value->getId(); ?>"><button>Editer</button></a></td>
-					<td><button>Publier</button></td>
-					<td><button>Supprimer</button></td>
+					<td><a href="index.php?action=publishPost&amp;id=<?= $value->getId(); ?>"><button>Publier</button></td>
+					<td><button>Supprimer</button></a></td>
 				</tr>	
 <?php 
 	}			

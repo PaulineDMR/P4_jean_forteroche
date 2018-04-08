@@ -83,6 +83,18 @@ class PostManager extends Manager {
 		return $postUpdated;
 	}
 
+	public function postPublication($postId) {
+		$db = $this->dbConnect();
+		$resp = $db->prepare("UPDATE posts SET publication_status = :status, publication_date = NOW() WHERE id = :postId LIMIT 1");
+		$resp->bindValue(status, TRUE, PDO::PARAM_STR);
+		$resp->bindValue(postId, $postId, PDO::PARAM_INT);
+		$postPublished = $resp->execute();
+
+		$resp->closeCursor();
+
+		return $postPublished;
+	}
+
 
 
 // DELETE a post in DB

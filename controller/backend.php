@@ -67,5 +67,17 @@ function updatePost($id, $title, $content) {
 	}
 }
 
+function updatePostStatus($id) {
+	$postManager = new PostManager();
+	$postUpdated = $postManager->postPublication($id);
+
+	if ($postUpdated === false)
+	{
+		throw new Exception('Impossible de publier cet article !');
+	}
+	else {
+		header('location: index.php?action=postAdmin');
+	}
+}
 
 

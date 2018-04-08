@@ -80,14 +80,23 @@ try {
 		}
 		// Update a post and display the admin post page - back
 		elseif ($_GET["action"] == "updatePost") {
-			if (isset($_GET["id"])) {
+			if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
 				updatePost($_GET["id"], htmlspecialchars_decode($_POST["titre"]), htmlspecialchars_decode($_POST["contenu"]));
 			} else {
 				throw new Exception("Aucun identifiant de billet envoyé");
 				
 			}	
 		}
+		// Update a post from FALSE to TRUE and display the admin post page back
+		elseif ($_GET["action"] == "publishPost") {
+			if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
+				updatePostStatus($_GET["id"]);
+			} else {
+				throw new Exception("Impossible de publier cet article");
+				
+			}	
 
+		}
 	}
 	else {
 		posts_list();

@@ -43,36 +43,44 @@
 		<h2>Commentaires précédents</h2>
 
 	<?php
-		for ($ix = 0; $ix < sizeof($comments); $ix++) {
-	?>
+		foreach ($comments AS $value) {
+			if ($value->getWarning() == true) {
+				echo " ";
+			} elseif ($value->getModerated() == true) {
+			?>
+				<div id="comment-container">
+					<h4>
+						<?php
+							$date = htmlspecialchars($value->getComment_date());
+							$date_fr = new DateTime($date);
+							echo "Le " .$date_fr->format('d-m-Y à H\hi'). " <span>" .htmlspecialchars($value->getAuthor()). "</span> a écrit";
+						?>
+					</h4>
 
-		<div id="comment-container">
-			<h4>
-				<?php
-					$date = htmlspecialchars($comments[$ix]->getComment_date());
-					$date_fr = new DateTime($date);
-					echo "Le " .$date_fr->format('d-m-Y à H\hi'). " <span>" .htmlspecialchars($comments[$ix]->getAuthor()). "</span> a écrit";
-				?>
-			</h4>
+					<p><?= nl2br(htmlspecialchars_decode($value->getComment())); ?></p>
+				</div>		
+			<?php	
+			}else {
+			?>
+				<div id="comment-container">
+					<h4>
+						<?php
+							$date = htmlspecialchars($value->getComment_date());
+							$date_fr = new DateTime($date);
+							echo "Le " .$date_fr->format('d-m-Y à H\hi'). " <span>" .htmlspecialchars($value->getAuthor()). "</span> a écrit";
+						?>
+					</h4>
 
-			<p><?= nl2br(htmlspecialchars_decode($comments[$ix]->getComment())); ?></p>
+					<p><?= nl2br(htmlspecialchars_decode($value->getComment())); ?></p>
 
-			<form method="post" action="index.php?action=warning&amp;id=<?= $post->getId() ?>&amp;commentId=<?= $comments[$ix]->getId(); ?>">
-				<input type="submit" value="Signaler">
-			</form>	
-		</div>
-
-<?php
-							
-					?>	
-
-
-
-
-
-	<?php 
-		} 
-	?>
+					<form method="post" action="index.php?action=warning&amp;id=<?= $post->getId() ?>&amp;commentId=<?= $value->getId(); ?>">
+						<input type="submit" value="Signaler">
+					</form>	
+				</div>		
+			<?php	
+			}		
+		}   
+		?>	
 	
 	</div>
 

@@ -9,6 +9,7 @@ class Comment extends Model {
 	private $comment_date;
 	private $post_id;
     private $warning;
+    private $moderated;
 
 	/*
 	function __construct(argument)
@@ -63,6 +64,15 @@ class Comment extends Model {
     public function getWarning() {
         return $this->warning;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getModerated()
+    {
+        return $this->moderated;
+    }
+
 
 
 //SETTERS
@@ -139,14 +149,15 @@ class Comment extends Model {
         return $this;
     }
 
-// Comment date Format Function
+    /**
+     * @param mixed $moderate
+     *
+     * @return self
+     */
+    public function setModerated($moderated)
+    {
+        $this->moderated = $moderated;
 
-    public function dateFormat() {
-        $date = new DateTime("$this->comment_date");
-        $date ->format('d/m/Y à H\hi\m');
-
-        return $date;
+        return $this;
     }
-
-    
 }

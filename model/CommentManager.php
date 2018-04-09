@@ -26,7 +26,7 @@ class CommentManager extends Manager {
 
 	public function get_comments($post_id) {
 		$db = $this->dbConnect();
-		$resp = $db->prepare("SELECT id, author, comment, comment_date, /*DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%i') AS comment_date_fr*/ post_id FROM comments WHERE post_id = ? ORDER BY comment_date DESC");
+		$resp = $db->prepare("SELECT id, author, comment, comment_date, warning, post_id, moderated FROM comments WHERE post_id = ? ORDER BY comment_date DESC");
 		$resp->execute(array($post_id));
 
 		$comments = array();
@@ -53,8 +53,10 @@ class CommentManager extends Manager {
 	public function updateWarning($id) { 
 
 		$db = $this->dbConnect();
-		$resp = $db->exec("UPDATE comments SET warning= TRUE WHERE id=$id LIMIT 1");
+		$resp = $db->prepare("UPDATE comments SET warning = TRUE WHERE id = :id LIMIT 1");
 
+		$resp->bindValue("id", $id, PDO::PARAM_INT);
+		$resp->execute();
 		$resp->closeCursor();
 
 		return $resp;

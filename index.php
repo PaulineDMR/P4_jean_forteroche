@@ -116,12 +116,31 @@ try {
 			if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
 				updatePostStatus($_GET["id"]);
 			} else {
-				throw new Exception("Impossible de publier cet article");
-				
+				throw new Exception("Impossible de publier cet article");	
 			}	
-
 		}
-		// Logo out the adminUser end destroy the session
+		// Display the Comments Admin View
+		elseif ($_GET["action"] == "commentAdmin") {
+			get_comments();	
+		}
+
+		// Moderate a comment and Display commentsAdminView
+		elseif ($_GET["action"] == "moderate" ) {
+			if (is_numeric($_GET["id"])) {
+				moderateComment($_GET["id"]);
+			} else {
+				throw new Exception("l'identifiant du commentaire est incorrect");
+			}
+		}
+
+		elseif ($_GET["action"] == "delete") {
+			if (is_numeric($_GET["id"])) {
+				deleteComment($_GET["id"]);
+			} else {
+				throw new Exception("l'identifiant du commentaire est incorrect");
+			}
+		}
+		// Log out the adminUser end destroy the session
 		elseif ($_GET["action"] == "logout") {
 			logout();
 		}
@@ -134,10 +153,3 @@ try {
 catch(Exception $e) {
 	echo 'Erreur: ' . $e->getMessage();
 }
-
-
-
-
-
-
-

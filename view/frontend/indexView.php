@@ -23,7 +23,7 @@ foreach ( $resp AS $value ) {
 				</div> -->
 			</div>
 			
-			<a class="comment-link" href="index.php?action=post&amp;id=<?= $value->getId(); ?>">
+			<a class="comment-link" href="index.php?action=post&amp;id=<?= $value->getId(); ?>&amp;page=<?= $_GET['page']; ?>">
 				<img src="view/frontend/img/reading.svg" alt="chat icon" height="30px" width="30px">
 				<p>Lire l'épisode</p>	
 			</a>		

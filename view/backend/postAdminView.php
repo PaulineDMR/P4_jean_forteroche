@@ -2,12 +2,12 @@
 ob_start();
 ?>
 	<div id="postadmin-main">
-		<h2>GESTIONNAIRE D'ARTICLES</h2>
+		<h2 class="adminsection-title">GESTIONNAIRE D'ARTICLES</h2>
 
 		<div id="publications">
 			<h3>Articles publiés</h3>
 
-			<table class="postadmin-table">
+			<table class="postadmin-table admin-table">
 				<tr>
 					<th>Titre</th>
 					<th>Date de création</th>
@@ -17,12 +17,12 @@ ob_start();
 <?php
 	foreach ($publishedPosts as $value) {
 ?>
-				<tr>
+				<tr class="tablerow">
 					<td><?= $value->getTitle(); ?></td>
 					<td><?= $value->getPost_date(); ?></td>
 					<td><?= $value->getPublication_date(); ?></td>
 					<td><span class="todo">Nbre de commentaires</span></td>
-					<td><button>Modifier ?</button></td>
+					<td><button class="todo">Modifier ?</button></td>
 				</tr>	
 <?php 
 	}			
@@ -33,7 +33,7 @@ ob_start();
 		<div id="brouillons">
 			<h3>Articles en attente de publication</h3>
 
-			<table class="postadmin-table">
+			<table class="postadmin-table admin-table">
 				<tr>
 					<th>Titre</th>
 					<th>Date de création</th>	
@@ -41,12 +41,12 @@ ob_start();
 <?php
 	foreach ($nonPublishedPosts as $value) {
 ?>
-				<tr>
+				<tr class="tablerow">
 					<td><?= $value->getTitle(); ?></td>
 					<td><?= $value->getPost_date(); ?></td>
-					<td><a href="index.php?action=writePost&amp;id=<?= $value->getId(); ?>"><button>Editer</button></a></td>
-					<td><a href="index.php?action=publishPost&amp;id=<?= $value->getId(); ?>"><button>Publier</button></td>
-					<td><button>Supprimer</button></a></td>
+					<td><button><a href="index.php?action=writePost&amp;id=<?= $value->getId(); ?>">Editer</a></button></td>
+					<td><button><a href="index.php?action=publishPost&amp;id=<?= $value->getId(); ?>">Publier</a></button></td>
+					<td><button class="todo">Supprimer</button></a></td>
 				</tr>	
 <?php 
 	}			

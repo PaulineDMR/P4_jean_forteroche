@@ -80,4 +80,35 @@ function updatePostStatus($id) {
 	}
 }
 
+function get_comments() {
+	$commentManager = new CommentManager();
+	$comments = $commentManager->get_comments();
+
+	$postManager = new PostManager();
+	$posts = $postManager->get_posts();
+
+	require("view/backend/commentAdminView.php");
+}
+
+function moderateComment($id) {
+	$commentManager = new CommentManager();
+	$commentModerated = $commentManager->updateModerated($id);
+
+	if ($commentModerated == false) {
+		throw new Exception('Impossible de modérer ce commentaire');
+	} else {
+		header('location: index.php?action=commentAdmin');
+	}
+}
+
+function deleteComment($id) {
+	$commentManager = new CommentManager();
+	$deletion = $commentManager->delete($id);
+
+	if ($deletion == false) {
+		throw new Exception('Impossible de supprimer ce commentaire');
+	} else {
+		header('location: index.php?action=commentAdmin');
+	}
+}
 

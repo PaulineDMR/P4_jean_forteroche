@@ -31,7 +31,7 @@
 					<p id="menu-element2"><a href="index.php?action=postAdmin">Articles</a></p>
 				</li>
 				<li class="menu-element">
-					<p id="menu-element3">Commentaires</p>
+					<p id="menu-element3"><a href="index.php?action=commentAdmin">Commentaires</a></p>
 				</li>
 				<li class="menu-element">
 					<p id="menu-element4"><a href="index.php?action=writePost">Nouvel article</a></p>
@@ -52,9 +52,9 @@
 		</nav>
 
 		<div id="main-content">
-
+			<div id="adminmain-content">
 			<?= $page_content ?>
-			
+			</div>
 		</div>
 
 		

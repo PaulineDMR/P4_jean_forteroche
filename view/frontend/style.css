@@ -146,6 +146,92 @@ a {
 	margin-left: 10px;
 }
 
+	/* Admin main section */
+
+#adminmain-content {
+	width: 80%;
+	margin: auto;
+	padding: 5px;
+}
+
+.adminsection-title {
+	font-family: 'Roboto', sans-serif;
+	font-weight: inherit;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#adminmain-content h3 {
+	font-weight: inherit;
+	/*font-family: "Old Standard TT", serif;*/
+	/*font-family: Arialnarrow;*/
+	/*font-family: "Playfair Display", serif;*/
+	font-family: 'Oswald', sans-serif;
+	border-bottom: 1px solid #2C3A47;
+	font-size: 1.4em;
+	color : #f1f2f6;
+}
+
+.admin-table {
+	margin-bottom: 20px;
+}
+
+.admin-table th {
+	text-align: left;
+	background-color: #ffffff;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-family: 'Roboto', sans-serif;
+	color: #2f3542;
+	text-transform: uppercase;
+	font-size: 0.8em;
+
+}
+
+.commentth_1 {
+	width: 10%;
+}
+
+.commentth_2 {
+	width: 10%;
+}
+
+.commentth_3 {
+	width: 20%;
+}
+
+.commentth_5 {
+	width: 8%;
+}
+
+.commentth_6 {
+	width: 10%;
+}
+
+.admin-table .tablerow {
+	border-bottom: 1px solid #ffa502;
+}
+
+.admin-table .tablerow:hover {
+	background-color: #ffa502;
+}
+
+.tablerow td {
+	font-size: 0.9em;
+	padding-left: 5px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.tablerow td.actionButtons {
+	padding-left: 0;
+	text-align: center;
+
+}
+
+#f1f2f6
+
+#dfe4ea
+
 	/* Liste des derniers posts publiés */
 
 #posts > p {

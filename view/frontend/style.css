@@ -109,6 +109,11 @@ a {
 	margin-bottom: 10px;
 }
 
+#photoJean {
+	width: 100%;
+	height: auto;
+}
+
 	/* ADMIN MENU */
 
 #admin-main nav div {
@@ -259,7 +264,7 @@ a {
 	font-size: 1.4em;
 }
 
- .post-excerpt-container p {
+.post-excerpt-container p {
 	font-family: 'Roboto', sans-serif;
 	font-size: 1.1em;
 }

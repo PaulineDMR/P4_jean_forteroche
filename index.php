@@ -53,6 +53,7 @@ try {
 		// Display the login page
 		elseif ($_GET["action"] == "login") {
 			if (!empty($_SESSION)) {
+				$name = getAdminName();
 				require("view/backend/adminView.php");
 			} else {
 			$errorLoginMessage = "";

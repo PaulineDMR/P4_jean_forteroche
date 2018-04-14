@@ -11,7 +11,7 @@ function adminAuthentification($login, $password, $noAccess) {
 
 	foreach ($admins as $value) {
 		if ($value->getLogin() == $login AND password_verify($password, $value->getPassword())) {
-			$name = $value->getName();
+			$name = getAdminName();
 			$_SESSION["login"] = password_hash($_POST["pseudo"],PASSWORD_BCRYPT);
 			$_SESSION["pwd"] = password_hash($_POST["mdp"],PASSWORD_BCRYPT);
 			require("view/backend/adminView.php");
@@ -21,6 +21,16 @@ function adminAuthentification($login, $password, $noAccess) {
 		}
 	}
 	return $_SESSION;
+}
+
+function getAdminName() {
+	$adminManager = new AdminManager();
+	$admins = $adminManager->get_admins();
+
+	foreach ($admins as $value) {
+		$name = $value->getName();
+	}
+	return $name;
 }
 
 function newPost($title, $content) {

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Routeur
 require('controller/frontend.php');
 require('controller/backend.php');
@@ -50,38 +52,57 @@ try {
 		}
 		// Display the login page
 		elseif ($_GET["action"] == "login") {
+			if (isset($_SESSION)) {
+				require("view/backend/adminView.php");
+			} else {
 			$errorLoginMessage = "";
 			require('view/backend/loginView.php');
+			}
 		}
 		// Display the index page of backoffice
 		elseif ($_GET["action"] == "authentification") {
+			$_SESSION["login"] = $_POST["pseudo"];
+			$_SESSION["pwd"] = $_POST["mdp"];
 			adminAuthentification($_POST["pseudo"], $_POST["mdp"]);
+			return $_SESSION;
 		}
 		// Dispaly the post edit page or the write post page
 		elseif ($_GET["action"] == "writePost") {
-			if (isset($_GET["id"])) {
-				edit_post($_GET["id"]);
-			} else {
-				$title = " ";
-				$content = "Ecrivez votre texte ici";
-				$url = "action=newPost";
-				$submit ="Créer";
+			if (isset($_SESSION)) {
+				if (isset($_GET["id"])) {
+					edit_post($_GET["id"]);
+				} else {
+					$title = " ";
+					$content = "Ecrivez votre texte ici";
+					$url = "action=newPost";
+					$submit ="Créer";
 
-				require('view/backend/writePostView.php');
-			}		
+					require('view/backend/writePostView.php');
+				} 			
+			} else {
+				throw new Exception("Vous n'avez pas l'autorisation d'accès");
+			}			
 		}
 		// Creat a new post in DB and Display the admin posts page - backoffice
 		elseif ($_GET["action"] == "newPost") {
-			if (!empty($_POST["titre"]) && !empty($_POST["contenu"])) {
-				newPost(htmlspecialchars($_POST["titre"]), htmlspecialchars($_POST["contenu"]));
+			if (isset($_SESSION)) {
+				if (!empty($_POST["titre"]) && !empty($_POST["contenu"])) {
+					newPost(htmlspecialchars($_POST["titre"]), htmlspecialchars($_POST["contenu"]));
 
-			} else {
-	            throw new Exception('Tous les champs ne sont pas remplis !');
-	        }			
+				} else {
+		            throw new Exception('Tous les champs ne sont pas remplis !');
+		        }
+		    } else {
+				throw new Exception("Vous n'avez pas l'autorisation d'accès");
+			}			
 		}
 		// Display the admin posts page - backoffice
 		elseif ($_GET["action"] == "postAdmin") {
-			publishedPosts();
+		if (isset($_SESSION)) {
+				publishedPosts();
+			} else {
+				throw new Exception("Vous n'avez pas l'autorisation d'accès");
+			}
 		}
 		// Update a post and display the admin post page - back
 		elseif ($_GET["action"] == "updatePost") {

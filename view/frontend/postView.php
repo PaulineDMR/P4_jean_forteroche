@@ -21,7 +21,7 @@
 		</div>
 
 		<div>
-			<a class="myButton" href="index.php?action=listPosts">Retour</a>
+			<a class="myButton" href="index.php?action=listPosts&amp;page=<?= $_GET["page"] ?>">Retour</a>
 		</div>
 
 		<div id="add-comment">

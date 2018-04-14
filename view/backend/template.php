@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+if (empty($_SESSION)) {
+	echo "Vous n'avez pas l'autorisation d'acces";
+
+	throw new Exception("Vous n'avez pas l'autorisation d'acces");	
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 	

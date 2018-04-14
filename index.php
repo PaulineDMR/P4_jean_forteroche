@@ -52,7 +52,7 @@ try {
 		}
 		// Display the login page
 		elseif ($_GET["action"] == "login") {
-			if (isset($_SESSION)) {
+			if (!empty($_SESSION)) {
 				require("view/backend/adminView.php");
 			} else {
 			$errorLoginMessage = "";
@@ -61,14 +61,12 @@ try {
 		}
 		// Display the index page of backoffice
 		elseif ($_GET["action"] == "authentification") {
-			$_SESSION["login"] = $_POST["pseudo"];
-			$_SESSION["pwd"] = $_POST["mdp"];
-			adminAuthentification($_POST["pseudo"], $_POST["mdp"]);
-			return $_SESSION;
+			$errorLoginMessage = "<p>Votre pseudo ou votre de mot de passe est incorrect, à nouveau saississez vos identifiants</p>";
+			adminAuthentification($_POST["pseudo"], $_POST["mdp"], $errorLoginMessage);
 		}
 		// Dispaly the post edit page or the write post page
 		elseif ($_GET["action"] == "writePost") {
-			if (isset($_SESSION)) {
+			if (!empty($_SESSION)) {
 				if (isset($_GET["id"])) {
 					edit_post($_GET["id"]);
 				} else {
@@ -85,7 +83,7 @@ try {
 		}
 		// Creat a new post in DB and Display the admin posts page - backoffice
 		elseif ($_GET["action"] == "newPost") {
-			if (isset($_SESSION)) {
+			if (!empty($_SESSION)) {
 				if (!empty($_POST["titre"]) && !empty($_POST["contenu"])) {
 					newPost(htmlspecialchars($_POST["titre"]), htmlspecialchars($_POST["contenu"]));
 
@@ -98,7 +96,7 @@ try {
 		}
 		// Display the admin posts page - backoffice
 		elseif ($_GET["action"] == "postAdmin") {
-		if (isset($_SESSION)) {
+		if (!empty($_SESSION)) {
 				publishedPosts();
 			} else {
 				throw new Exception("Vous n'avez pas l'autorisation d'accès");
@@ -142,7 +140,10 @@ try {
 				throw new Exception("l'identifiant du commentaire est incorrect");
 			}
 		}
-
+		// Log out the adminUser end destroy the session
+		elseif ($_GET["action"] == "logout") {
+			logout();
+		}
 	}
 	else {
 		$pageNumber = 1;
@@ -152,10 +153,3 @@ try {
 catch(Exception $e) {
 	echo 'Erreur: ' . $e->getMessage();
 }
-
-
-
-
-
-
-

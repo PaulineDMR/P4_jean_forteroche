@@ -5,19 +5,22 @@ require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once("model/AdminManager.php");
 
-function adminAuthentification($login, $password) {
+function adminAuthentification($login, $password, $noAccess) {
 	$adminManager = new AdminManager();
 	$admins = $adminManager->get_admins();
 
 	foreach ($admins as $value) {
-		if ($value->getLogin() == $login AND $value->getPassword() == md5($password)) {
+		if ($value->getLogin() == $login AND password_verify($password, $value->getPassword())) {
 			$name = $value->getName();
+			$_SESSION["login"] = password_hash($_POST["pseudo"],PASSWORD_BCRYPT);
+			$_SESSION["pwd"] = password_hash($_POST["mdp"],PASSWORD_BCRYPT);
 			require("view/backend/adminView.php");
 		} else {
-			$errorLoginMessage = "<p>Votre pseudo ou votre de mot de passe est incorrect, à nouveau saississez vos identifiants</p>";
+			echo $noAccess;
 			require("view/backend/loginView.php");
 		}
 	}
+	return $_SESSION;
 }
 
 function newPost($title, $content) {
@@ -31,7 +34,6 @@ function newPost($title, $content) {
 	else {
 		header('location: index.php?action=postAdmin');
 	}
-
 }
 
 function publishedPosts() {
@@ -112,3 +114,8 @@ function deleteComment($id) {
 	}
 }
 
+function logout() {
+	session_unset();
+	session_destroy();
+	header('location: index.php');
+}

@@ -121,6 +121,10 @@ try {
 			}	
 
 		}
+		// Logo out the adminUser end destroy the session
+		elseif ($_GET["action"] == "logout") {
+			logout();
+		}
 	}
 	else {
 		$pageNumber = 1;

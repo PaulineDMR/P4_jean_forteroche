@@ -56,7 +56,7 @@ if (empty($_SESSION)) {
 				<li class="menu-element">
 					<img src="view/frontend/img/logout.svg" alt="Logout" height="20px"
     width="20px">
-					<p id="menu-element6">Déconnexion</p>
+					<p id="menu-element6"><a href="index.php?action=logout">Déconnexion</a></p>
 				</li>
  
 			</ul>

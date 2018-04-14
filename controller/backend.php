@@ -34,7 +34,6 @@ function newPost($title, $content) {
 	else {
 		header('location: index.php?action=postAdmin');
 	}
-
 }
 
 function publishedPosts() {
@@ -82,5 +81,13 @@ function updatePostStatus($id) {
 		header('location: index.php?action=postAdmin');
 	}
 }
+
+function logout() {
+	session_unset();
+	session_destroy();
+	header('location: index.php');
+}
+
+
 
 

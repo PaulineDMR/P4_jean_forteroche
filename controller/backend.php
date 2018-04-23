@@ -33,6 +33,13 @@ function getAdminName() {
 	return $name;
 }
 
+function getLastPost() {
+	$postManager = new PostManager();
+	$post = $postManager->get_lastPost();
+
+	return $post;
+}
+
 function newPost($title, $content) {
 	$postManager = new PostManager();
 	$newPost = $postManager->add_new_post($title, $content);
@@ -46,10 +53,18 @@ function newPost($title, $content) {
 	}
 }
 
+function onePost($postId) {
+	$postManager = new PostManager();
+	$post = $postManager->get_post($postId);
+
+	return $post;
+}
+
 function publishedPosts() {
 	$postManager = new PostManager();
 	$publishedPosts = $postManager->get_posts();
 	$nonPublishedPosts = $postManager->get_nonPublishedPosts();
+	//$commentsNumber = countComments($lastPost->getId());
 
 	require("view/backend/postAdminView.php");
 }
@@ -100,6 +115,14 @@ function get_comments() {
 	$posts = $postManager->get_posts();
 
 	require("view/backend/commentAdminView.php");
+}
+
+function get_lastComment() {
+	$commentManager = new CommentManager();
+	$comments = $commentManager->get_comments();
+	$lastPost = $comments[0];
+
+	return $lastPost;
 }
 
 function moderateComment($id) {

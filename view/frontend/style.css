@@ -65,6 +65,7 @@ a {
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
+
 	/* INDEX MAIN SECTION */
 
 #index-main > div {
@@ -151,7 +152,22 @@ a {
 	margin-left: 10px;
 }
 
-	/* Admin main section */
+	/* Admin index */
+
+.last-event h4 {
+	
+	font-family: 'Oswald', sans-serif;
+	border-bottom: 1px solid #2C3A47;
+	font-size: 1.4em;
+	color : #f1f2f6;
+}
+
+.last-event p {
+	
+}
+
+
+	/* Admin post / article main section */
 
 #adminmain-content {
 	width: 80%;

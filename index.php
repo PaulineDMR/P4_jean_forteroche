@@ -10,7 +10,7 @@ try {
 	// Display the index page of the blog
 	if (isset($_GET["action"])) { 
 		if ($_GET["action"] == "listPosts") {
-			if (isset($_GET["page"]) && is_numeric($_GET["page"])) {
+			if (!empty($_GET["page"]) && is_numeric($_GET["page"])) {
 				posts_list(5, $_GET["page"]);
 			} else {
 				$pageNumber = 1;

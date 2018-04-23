@@ -5,7 +5,9 @@
 	<meta charset="utf-8">
 	<title><?= $page_title ?></title>
 	<link rel="stylesheet" type="text/css" href="view/frontend/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Old+Standard+TT|Oswald|Playfair+Display|Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Old+Standard+TT|Oswald|Playfair+Display|Roboto|Arsenal|Barlow|News+Cycle" rel="stylesheet">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -39,7 +41,8 @@
 	<footer id="index-footer">
 		
 	</footer>
-	
+
+	<script type="text/javascript" src="view/frontend/js/scrolltop.js"></script>	
 
 
 </body>

@@ -87,7 +87,7 @@ a {
 	/* INDEX ASIDE */
 
 #reader-main aside {
-	padding: 20px 15px 60px 5px;
+	padding: 20px 15px 60px 15px;
 	text-align: justify;
 }
 
@@ -98,9 +98,9 @@ a {
 
 #reader-main aside p {
 	letter-spacing: 1.1px;
-	font-size: 1.1em;
+	/*font-size: 1.1em;*/
 	margin-bottom: 10px;
-	font-family: Arialnarrow;
+	font-family: 'News Cycle', sans-serif;
 	line-height: 24px;
 }
 
@@ -165,7 +165,6 @@ a {
 	margin-bottom: 30px;
 	margin-top: 20px;
 }
-
 
 	/* Admin post / article main section */
 
@@ -251,7 +250,6 @@ a {
 	/* Liste des derniers posts publiés */
 
 #posts > p {
-	background-color: #CAD3C8;
 	line-height: 40px;
 	font-family: "Old Standard TT", serif;
 	font-size: 1.8em;
@@ -271,13 +269,15 @@ a {
 }
 
 .post-excerpt-container h3 {
+	font-family: 'News Cycle', sans-serif;
+	font-weight: bold;
 	margin-bottom: 5px;
-	font-size: 1.4em;
+	font-size: 1.3em;
 }
 
 .post-excerpt-container p {
 	font-family: 'Roboto', sans-serif;
-	font-size: 1.1em;
+	font-size: 0.9em;
 }
 
 .post-excerpt {
@@ -301,6 +301,7 @@ a {
 .comment-link p {
 	margin-left: 15px;
 	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
 }
 
 #pagination ul {
@@ -322,6 +323,18 @@ a {
 	border-radius: 5px 5px 5px 5px;
 	padding-left: 3px;
 	padding-right: 3px;
+}
+
+#admin-link {
+	position: relative;
+	top: 200px;
+	text-align: right;
+	margin-right: 50px;
+	font-family: "Old Standard TT", serif;
+}
+
+#admin-link a:hover {
+	border-bottom: 1.5px solid #55E6C1;
 }
 
 	/* Page épisode avec ses commentaires */
@@ -382,19 +395,22 @@ a {
 }
 
 #post h3 {
-	font-family: 'Oswald', sans-serif;
+	font-family: 'News Cycle', sans-serif;
 	font-size: 1.6em;
+	color: #2C3A47;
 }
 
 #post p:nth-child(2) {
-	font-family: 'Oswald', sans-serif;
-	font-size: 1.2em;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.1em;
 	margin-bottom: 15px;
+	color: #ced6e0;
 }
 
 #post p{
 	font-size: 1.2em;
 	letter-spacing: 1.4px;
+	color: #2C3A47;
 }
 
 	/* Ecrire un commentaire */

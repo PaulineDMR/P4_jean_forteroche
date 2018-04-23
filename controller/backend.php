@@ -14,6 +14,11 @@ function adminAuthentification($login, $password, $noAccess) {
 			$name = getAdminName();
 			$_SESSION["login"] = password_hash($_POST["pseudo"],PASSWORD_BCRYPT);
 			$_SESSION["pwd"] = password_hash($_POST["mdp"],PASSWORD_BCRYPT);
+
+			$lastPost = getLastPost();
+			$lastComment = get_lastComment();
+			$post = onePost($lastComment->getPost_id());
+
 			require("view/backend/adminView.php");
 		} else {
 			echo $noAccess;
@@ -64,7 +69,6 @@ function publishedPosts() {
 	$postManager = new PostManager();
 	$publishedPosts = $postManager->get_posts();
 	$nonPublishedPosts = $postManager->get_nonPublishedPosts();
-	//$commentsNumber = countComments($lastPost->getId());
 
 	require("view/backend/postAdminView.php");
 }

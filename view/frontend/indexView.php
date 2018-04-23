@@ -78,7 +78,7 @@ foreach ( $resp AS $value ) {
 		</ul>
 		
 	</div>
-	<div>
+	<div id="admin-link">
 		<a href="index.php?action=login">Espace administrateur</a>
 	</div>
 

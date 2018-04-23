@@ -12,17 +12,27 @@ ob_start();
 					<th>Titre</th>
 					<th>Date de création</th>
 					<th>Date de publication</th>
-					<th>nombre de commentaires</th>
 				</tr>
 <?php
 	foreach ($publishedPosts as $value) {
 ?>
 				<tr class="tablerow">
 					<td><?= $value->getTitle(); ?></td>
-					<td><?= $value->getPost_date(); ?></td>
-					<td><?= $value->getPublication_date(); ?></td>
-					<td><span class="todo">Nbre de commentaires</span></td>
-					<td><button class="todo">Modifier ?</button></td>
+					<td>
+						<?php 
+							$postDate = $value->getPost_date();
+							$postDateFr = new DateTime($postDate);
+							echo $postDateFr->format('d-m-Y');
+						?>	
+					</td>
+					<td>
+						<?php
+							$publicationDate = $value->getPublication_date();
+							$publicationDateFr = new DateTime($publicationDate);
+							echo $publicationDateFr->format('d-m-Y');
+						?>	
+					</td>
+					<td><button><a href="index.php?action=writePost&amp;id=<?= $value->getId(); ?>">Modifier</a></button></td>
 				</tr>	
 <?php 
 	}			
@@ -43,10 +53,15 @@ ob_start();
 ?>
 				<tr class="tablerow">
 					<td><?= $value->getTitle(); ?></td>
-					<td><?= $value->getPost_date(); ?></td>
+					<td>
+						<?php 
+							$postDate = $value->getPost_date();
+							$postDateFr = new DateTime($postDate);
+							echo $postDateFr->format('d-m-Y');
+						?>	
 					<td><button><a href="index.php?action=writePost&amp;id=<?= $value->getId(); ?>">Editer</a></button></td>
 					<td><button><a href="index.php?action=publishPost&amp;id=<?= $value->getId(); ?>">Publier</a></button></td>
-					<td><button class="todo">Supprimer</button></a></td>
+					<td><button><a href="index.php?action=deletePost&amp;id=<?= $value->getId(); ?>">Supprimer</a></button></td>
 				</tr>	
 <?php 
 	}			

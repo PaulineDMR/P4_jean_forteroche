@@ -71,6 +71,18 @@ class PostManager extends Manager {
 		return $posts;
 	}
 
+	public function get_lastPost() {
+		$db = $this->dbConnect();
+		$resp = $db->query("SELECT id, title, publication_date FROM posts WHERE publication_status = TRUE ORDER BY publication_date DESC LIMIT 1");
+
+		$entry = $resp->fetch();
+		$post = new Post;
+		$post->hydrate($entry);
+
+		$resp->closeCursor();
+		return $post;
+	}
+
 	public function countPages($postsPerPage) {
 		$db = $this->dbConnect();
 		$resp = $db->query('SELECT id FROM posts WHERE publication_status = TRUE');
@@ -125,9 +137,16 @@ class PostManager extends Manager {
 		return $postPublished;
 	}
 
-
-
 // DELETE a post in DB
 
+	public function delete($id) {
+		$db = $this->dbConnect();
+		$resp = $db->prepare("DELETE FROM posts WHERE id = :id");
+
+		$resp->bindValue("id", $id, PDO::PARAM_INT);
+		$resp->execute();
+
+		return $resp;
+	} 
 
 }

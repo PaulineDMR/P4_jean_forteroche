@@ -4,7 +4,15 @@ ob_start();
 
 ?>
 	<div id="new-article">
-		<h2>Nouvel Article</h2>
+		<h2>
+			<?php 
+				if ($_GET["action"] == "writePost" && isset($_GET["id"])) {
+					echo "Modifier l'article";
+				} else {
+					echo "Nouvel Article";
+				}
+			?>
+		</h2>
 
 		<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
   		<script>tinymce.init({ selector:'textarea' });</script>

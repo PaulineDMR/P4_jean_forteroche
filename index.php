@@ -10,7 +10,7 @@ try {
 	// Display the index page of the blog
 	if (isset($_GET["action"])) { 
 		if ($_GET["action"] == "listPosts") {
-			if (isset($_GET["page"]) && is_numeric($_GET["page"])) {
+			if (!empty($_GET["page"]) && is_numeric($_GET["page"])) {
 				posts_list(5, $_GET["page"]);
 			} else {
 				$pageNumber = 1;
@@ -54,6 +54,10 @@ try {
 		elseif ($_GET["action"] == "login") {
 			if (!empty($_SESSION)) {
 				$name = getAdminName();
+				$lastPost = getLastPost();
+				$lastComment = get_lastComment();
+				$post = onePost($lastComment->getPost_id());
+
 				require("view/backend/adminView.php");
 			} else {
 			$errorLoginMessage = "";
@@ -99,6 +103,7 @@ try {
 		elseif ($_GET["action"] == "postAdmin") {
 		if (!empty($_SESSION)) {
 				publishedPosts();
+				//$commentsNumber = countComments($lastPost->getId());
 			} else {
 				throw new Exception("Vous n'avez pas l'autorisation d'accès");
 			}
@@ -134,9 +139,17 @@ try {
 			}
 		}
 
-		elseif ($_GET["action"] == "delete") {
+		elseif ($_GET["action"] == "deleteComment") {
 			if (is_numeric($_GET["id"])) {
 				deleteComment($_GET["id"]);
+			} else {
+				throw new Exception("l'identifiant du commentaire est incorrect");
+			}
+		}
+		// Delete a post and come back to the post admin View
+		elseif ($_GET["action"] == "deletePost") {
+			if (is_numeric($_GET["id"])) {
+				deletePost($_GET["id"]);
 			} else {
 				throw new Exception("l'identifiant du commentaire est incorrect");
 			}

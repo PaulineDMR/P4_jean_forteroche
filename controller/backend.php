@@ -14,9 +14,14 @@ function adminAuthentification($login, $password, $noAccess) {
 			$name = getAdminName();
 			$_SESSION["login"] = password_hash($_POST["pseudo"],PASSWORD_BCRYPT);
 			$_SESSION["pwd"] = password_hash($_POST["mdp"],PASSWORD_BCRYPT);
+
+			$lastPost = getLastPost();
+			$lastComment = get_lastComment();
+			$post = onePost($lastComment->getPost_id());
+
 			require("view/backend/adminView.php");
 		} else {
-			echo $noAccess;
+			$errorLoginMessage = $noAccess;
 			require("view/backend/loginView.php");
 		}
 	}
@@ -33,6 +38,13 @@ function getAdminName() {
 	return $name;
 }
 
+function getLastPost() {
+	$postManager = new PostManager();
+	$post = $postManager->get_lastPost();
+
+	return $post;
+}
+
 function newPost($title, $content) {
 	$postManager = new PostManager();
 	$newPost = $postManager->add_new_post($title, $content);
@@ -44,6 +56,13 @@ function newPost($title, $content) {
 	else {
 		header('location: index.php?action=postAdmin');
 	}
+}
+
+function onePost($postId) {
+	$postManager = new PostManager();
+	$post = $postManager->get_post($postId);
+
+	return $post;
 }
 
 function publishedPosts() {
@@ -102,6 +121,14 @@ function get_comments() {
 	require("view/backend/commentAdminView.php");
 }
 
+function get_lastComment() {
+	$commentManager = new CommentManager();
+	$comments = $commentManager->get_comments();
+	$lastPost = $comments[0];
+
+	return $lastPost;
+}
+
 function moderateComment($id) {
 	$commentManager = new CommentManager();
 	$commentModerated = $commentManager->updateModerated($id);
@@ -121,6 +148,17 @@ function deleteComment($id) {
 		throw new Exception('Impossible de supprimer ce commentaire');
 	} else {
 		header('location: index.php?action=commentAdmin');
+	}
+}
+
+function deletePost($id) {
+	$postManager = new PostManager();
+	$deletion = $postManager->delete($id);
+
+	if ($deletion == false) {
+		throw new Exception('Impossible de supprimer ce commentaire');
+	} else {
+		header('location: index.php?action=postAdmin');
 	}
 }
 

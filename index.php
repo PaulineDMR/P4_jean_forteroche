@@ -54,6 +54,10 @@ try {
 		elseif ($_GET["action"] == "login") {
 			if (!empty($_SESSION)) {
 				$name = getAdminName();
+				$lastPost = getLastPost();
+				$lastComment = get_lastComment();
+				$post = onePost($lastComment->getPost_id());
+
 				require("view/backend/adminView.php");
 			} else {
 			$errorLoginMessage = "";

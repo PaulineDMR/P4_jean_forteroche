@@ -21,7 +21,7 @@ function adminAuthentification($login, $password, $noAccess) {
 
 			require("view/backend/adminView.php");
 		} else {
-			echo $noAccess;
+			$errorLoginMessage = $noAccess;
 			require("view/backend/loginView.php");
 		}
 	}

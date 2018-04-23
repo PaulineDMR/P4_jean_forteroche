@@ -20,7 +20,6 @@ ob_start();
 					echo $publicationDateFr->format('d-m-Y');
 				?>	
 			</p>
-			<p>Nombre de commentaires associés : <!-- /*$commentsNumber;*/  --></p>
 		</article>
 
 		<article class="last-event">
@@ -38,20 +37,6 @@ ob_start();
 			<p>Commentaire : <?= $lastComment->getComment(); ?></p>
 			<p>Au sujet de l'épisode : <?= $post->getTitle(); ?></p>
 		</article>
-
-		<article class="last-event">
-			<h4>Commentaire signalé</h4>
-			<div>
-				<p>Auteur : </p>
-				<p>Date de publication :</p>
-			</div>
-			<p>Commentaire kjdhflqjsdhfkqsgdqshgdkqshgdkqshdgflqjshfdlqjhsd sdfh qskdfgq</p>
-			<p>Article concerné Titre : </p>
-			<button>Modérer</button>
-			<button>Archiver</button>
-		</article>
-
-
 	</div>
 
 <?php 

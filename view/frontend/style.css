@@ -162,8 +162,9 @@ a {
 	color : #f1f2f6;
 }
 
-.last-event p {
-	
+.last-event {
+	margin-bottom: 30px;
+	margin-top: 20px;
 }
 
 
@@ -230,7 +231,7 @@ a {
 }
 
 .admin-table .tablerow {
-	border-bottom: 1px solid #ffa502;
+	height: 30px;
 }
 
 .admin-table .tablerow:hover {
@@ -246,12 +247,7 @@ a {
 .tablerow td.actionButtons {
 	padding-left: 0;
 	text-align: center;
-
 }
-
-#f1f2f6
-
-#dfe4ea
 
 	/* Liste des derniers posts publiés */
 

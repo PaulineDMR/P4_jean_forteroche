@@ -147,6 +147,17 @@ function deleteComment($id) {
 	}
 }
 
+function deletePost($id) {
+	$postManager = new PostManager();
+	$deletion = $postManager->delete($id);
+
+	if ($deletion == false) {
+		throw new Exception('Impossible de supprimer ce commentaire');
+	} else {
+		header('location: index.php?action=postAdmin');
+	}
+}
+
 function logout() {
 	session_unset();
 	session_destroy();

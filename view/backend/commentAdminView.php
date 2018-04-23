@@ -49,7 +49,7 @@ ob_start();
 						<button><a href="index.php?action=moderate&amp;id=<?= $value->getId(); ?>">
 						<?php 
 							echo ($value->getWarning() ? 'Modérer' : 'Valider');
-						?></a></button><br/><button><a href="index.php?action=delete&amp;id=<?= $value->getId(); ?>">Supprimer</a></button>
+						?></a></button><br/><button><a href="index.php?action=deleteComment&amp;id=<?= $value->getId(); ?>">Supprimer</a></button>
 					</td>
 				</tr>		
 <?php 

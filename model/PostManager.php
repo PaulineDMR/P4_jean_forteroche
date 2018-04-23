@@ -137,9 +137,16 @@ class PostManager extends Manager {
 		return $postPublished;
 	}
 
-
-
 // DELETE a post in DB
 
+	public function delete($id) {
+		$db = $this->dbConnect();
+		$resp = $db->prepare("DELETE FROM posts WHERE id = :id");
+
+		$resp->bindValue("id", $id, PDO::PARAM_INT);
+		$resp->execute();
+
+		return $resp;
+	} 
 
 }

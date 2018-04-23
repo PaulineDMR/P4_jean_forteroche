@@ -139,9 +139,17 @@ try {
 			}
 		}
 
-		elseif ($_GET["action"] == "delete") {
+		elseif ($_GET["action"] == "deleteComment") {
 			if (is_numeric($_GET["id"])) {
 				deleteComment($_GET["id"]);
+			} else {
+				throw new Exception("l'identifiant du commentaire est incorrect");
+			}
+		}
+		// Delete a post and come back to the post admin View
+		elseif ($_GET["action"] == "deletePost") {
+			if (is_numeric($_GET["id"])) {
+				deletePost($_GET["id"]);
 			} else {
 				throw new Exception("l'identifiant du commentaire est incorrect");
 			}

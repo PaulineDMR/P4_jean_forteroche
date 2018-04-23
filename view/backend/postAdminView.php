@@ -61,7 +61,7 @@ ob_start();
 						?>	
 					<td><button><a href="index.php?action=writePost&amp;id=<?= $value->getId(); ?>">Editer</a></button></td>
 					<td><button><a href="index.php?action=publishPost&amp;id=<?= $value->getId(); ?>">Publier</a></button></td>
-					<td><button class="todo">Supprimer</button></a></td>
+					<td><button><a href="index.php?action=deletePost&amp;id=<?= $value->getId(); ?>">Supprimer</a></button></td>
 				</tr>	
 <?php 
 	}			

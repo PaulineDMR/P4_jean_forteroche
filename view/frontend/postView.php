@@ -42,45 +42,24 @@
 
 		<h2>Commentaires précédents</h2>
 
-	<?php
-		foreach ($comments AS $value) {
-			if ($value->getWarning() == true) {
-				echo " ";
-			} elseif ($value->getModerated() == true) {
-			?>
+		<?php foreach ($comments AS $value):?>
+			<?php if ($value->getWarning() == true):?>
+				&nbsp;
+			<?php elseif ($value->getModerated() == true):?>
 				<div id="comment-container">
-					<h4>
-						<?php
-							$date = htmlspecialchars($value->getComment_date());
-							$date_fr = new DateTime($date);
-							echo "Le " .$date_fr->format('d-m-Y à H\hi'). " <span>" .htmlspecialchars($value->getAuthor()). "</span> a écrit";
-						?>
-					</h4>
-
-					<p><?= nl2br(htmlspecialchars_decode($value->getComment())); ?></p>
+					<h4> Le <?= $post->getCommentDateTime;?> </h4>
+					<p><?= $value->getCommentEncoded() ?></p>
 				</div>		
-			<?php	
-			}else {
-			?>
+			<?php else:?>
 				<div id="comment-container">
-					<h4>
-						<?php
-							$date = htmlspecialchars($value->getComment_date());
-							$date_fr = new DateTime($date);
-							echo "Le " .$date_fr->format('d-m-Y à H\hi'). " <span>" .htmlspecialchars($value->getAuthor()). "</span> a écrit";
-						?>
-					</h4>
-
-					<p><?= nl2br(htmlspecialchars_decode($value->getComment())); ?></p>
-
+					<h4> Le <?= $post->getCommentDateTime;?> </h4>
+					<p><?= $value->getCommentEncoded() ?></p>
 					<form method="post" action="index.php?action=warning&amp;id=<?= $post->getId() ?>&amp;commentId=<?= $value->getId(); ?>">
 						<input type="submit" value="Signaler">
 					</form>	
 				</div>		
-			<?php	
-			}		
-		}   
-		?>	
+			<?php endif; ?>		
+		<?php endforeach;?>  
 	
 	</div>
 

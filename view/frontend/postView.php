@@ -21,7 +21,7 @@
 		</div>
 
 		<div>
-			<a class="myButton" href="index.php?action=listPosts&amp;page=<?= $_GET["page"] ?>">Retour</a>
+			<a class="myButton" href="index.php?action=listPosts<?php if (isset($_GET["page"])) : echo "&amp;page=" .$_GET["page"]; endif; ?>">Retour</a>
 		</div>
 
 		<div id="add-comment">
@@ -73,7 +73,7 @@
 
 					<p><?= nl2br(htmlspecialchars_decode($value->getComment())); ?></p>
 
-					<form method="post" action="index.php?action=warning&amp;id=<?= $post->getId() ?>&amp;commentId=<?= $value->getId(); ?>">
+					<form method="POST" action="index.php?action=warning&amp;id=<?= $post->getId() ?>&amp;commentId=<?= $value->getId(); ?>">
 						<input type="submit" value="Signaler">
 					</form>	
 				</div>		

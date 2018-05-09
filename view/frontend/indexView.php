@@ -13,14 +13,11 @@ foreach ( $resp AS $value ) {
 				<h3><?= htmlspecialchars($value->getTitle()); ?></h3>
 				<p>
 					<?php
-						$date = htmlspecialchars($value->getPost_date());
+						$date = htmlspecialchars($value->getPublication_date());
 						$date_fr = new DateTime($date);
 						echo "Publié le " .$date_fr->format('d-m-Y');	
 					?>				
 				</p>
-				<!-- <div class="post-excerpt">
-					<?= $value->getContent(); ?>
-				</div> -->
 			</div>
 			
 			<a class="comment-link" href="index.php?action=post&amp;id=<?= $value->getId(); ?>&amp;page=<?= $pageNumber; ?>">

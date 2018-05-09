@@ -6,8 +6,7 @@ ob_start();
 ?>
 	<div id="index-main">
 		<div>
-			<h2>Content de vous revoir <?= $name ?> !</h2>
-			<!-- Fonctionnalité possible : <p>Dernière connecion à <span class="todo">Date, heure !!!!</span></p>  -->
+			<h2>Content de vous revoir <?= $adminName ?> !</h2>
 		</div> 
 
 		<article class="last-event">

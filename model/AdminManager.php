@@ -8,8 +8,7 @@ class AdminManager extends Manager {
 	
 	// READ
 	
-	// Get all admins in db
-	
+	// Get all admins from db
 	public function get_admins() {
 	$db = $this->dbConnect();
 	$resp = $db->query("SELECT id, name, login, password FROM admin ");

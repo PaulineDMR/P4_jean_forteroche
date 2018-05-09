@@ -1,5 +1,4 @@
 <?php
-// set PostManager extended class of Manager
 require_once("Manager.php");
 require_once("Post.php");
 
@@ -9,7 +8,7 @@ class PostManager extends Manager {
 	/**
 	 * @return 
 	 */
-	public function add_new_post ($title, $content) {
+	public function addPost ($title, $content) {
 		$db = $this->dbConnect();
 		$insert = $db->prepare("INSERT INTO posts (post_date, title, content) VALUES (NOW(), ?, ?)");
 		$newPost = $insert->execute(array($title, $content));
@@ -139,7 +138,7 @@ class PostManager extends Manager {
 
 // DELETE a post in DB
 
-	public function delete($id) {
+	public function deletePost($id) {
 		$db = $this->dbConnect();
 		$resp = $db->prepare("DELETE FROM posts WHERE id = :id");
 

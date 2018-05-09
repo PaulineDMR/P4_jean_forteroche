@@ -95,7 +95,7 @@ ob_start();
 					</td>
 					<td><?= $value->getComment(); ?></td>
 					<td class="actionButtons">
-						<button><a href="index.php?action=delete&amp;id=<?= $value->getId(); ?>">Supprimer</a></button>
+						<button><a href="index.php?action=deleteComment&amp;id=<?= $value->getId(); ?>">Supprimer</a></button>
 					</td>	
 				</tr>	
 <?php 

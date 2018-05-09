@@ -28,7 +28,7 @@ class CommentManager extends Manager {
 	 * [get all the comments from the db, table comments]
 	 * @return [array] [list of all the comments]
 	 */
-	public function get_comments() {
+	public function getComments() {
 		$db = $this->dbConnect();
 		$resp = $db->query("SELECT id, author, comment, comment_date, warning, post_id, moderated FROM comments ORDER BY comment_date DESC");
 

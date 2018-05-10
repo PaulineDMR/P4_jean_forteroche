@@ -19,7 +19,7 @@ ob_start();
 
 		<form method="post" action="index.php?<?= $url ?>">
 			<label for="titre"></label><input type="text" name="titre" id="titre" value="<?= $title ?>" required>
-			<textarea id="contenu" name="contenu"s required><?= $content ?></textarea>
+			<textarea id="contenu" name="contenu"s required><?= $content; ?></textarea>
 			<input type="submit" value="<?= $submit ?>">
 		</form>
 

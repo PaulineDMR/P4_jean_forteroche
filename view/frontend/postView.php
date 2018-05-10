@@ -11,7 +11,7 @@
 			<h3><?=  htmlspecialchars($post->getTitle()); ?></h3>
 			<p>
 				<?php
-					$date = htmlspecialchars($post->getPost_date());
+					$date = $post->getPost_date();
 					$date_fr = new DateTime($date);
 					echo "Publié le " .$date_fr->format('d-m-Y');
 				?>
@@ -51,13 +51,13 @@
 				<div id="comment-container">
 					<h4>
 						<?php
-							$date = htmlspecialchars($value->getComment_date());
+							$date = $value->getComment_date();
 							$date_fr = new DateTime($date);
 							echo "Le " .$date_fr->format('d-m-Y à H\hi'). " <span>" .htmlspecialchars($value->getAuthor()). "</span> a écrit";
 						?>
 					</h4>
 
-					<p><?= nl2br(htmlspecialchars_decode($value->getComment())); ?></p>
+					<p><?= nl2br(htmlspecialchars($value->getComment())); ?></p>
 				</div>		
 			<?php	
 			}else {
@@ -65,13 +65,13 @@
 				<div id="comment-container">
 					<h4>
 						<?php
-							$date = htmlspecialchars($value->getComment_date());
+							$date = $value->getComment_date();
 							$date_fr = new DateTime($date);
 							echo "Le " .$date_fr->format('d-m-Y à H\hi'). " <span>" .htmlspecialchars($value->getAuthor()). "</span> a écrit";
 						?>
 					</h4>
 
-					<p><?= nl2br(htmlspecialchars_decode($value->getComment())); ?></p>
+					<p><?= nl2br(htmlspecialchars($value->getComment())); ?></p>
 
 					<form method="POST" action="index.php?action=warning&amp;id=<?= $post->getId() ?>&amp;commentId=<?= $value->getId(); ?>">
 						<input type="submit" value="Signaler">

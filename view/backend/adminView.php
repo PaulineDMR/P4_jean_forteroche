@@ -11,30 +11,20 @@ ob_start();
 
 		<article class="last-event">
 			<h4>Dernier article publié</h4>
-			<p>Titre : <?= $lastPost->getTitle(); ?></p>
-			<p>Publié le : 
-				<?php
-					$publicationDate = $lastPost->getPublication_date();
-					$publicationDateFr = new DateTime($publicationDate);
-					echo $publicationDateFr->format('d-m-Y');
-				?>	
+			<p>Titre : <?= htmlspecialchars($lastPostTitle); ?></p>
+			<p>Publié le : <?= $lastPostPubDateFr->format('d-m-Y'); ?>	
 			</p>
 		</article>
 
 		<article class="last-event">
 			<h4>Dernier commentaire reçu</h4>
 			<div>
-				<p>Auteur : <?= $lastComment->getAuthor(); ?></p>
-				<p>Posté le : 
-					<?php 
-						$publicationDate = $lastComment->getComment_date();
-						$publicationDateFr = new DateTime($publicationDate);
-						echo $publicationDateFr->format('d-m-Y');
-					?>
+				<p>Auteur : <?= htmlspecialchars($lastCommentAuthor); ?></p>
+				<p>Posté le : <?= $LastCommentPubDateFr->format('d-m-Y'); ?>
 				</p>
 			</div>
-			<p>Commentaire : <?= $lastComment->getComment(); ?></p>
-			<p>Au sujet de l'épisode : <?= $post->getTitle(); ?></p>
+			<p>Commentaire : <?= htmlspecialchars($lastCommentContent); ?></p>
+			<p>Au sujet de l'épisode : <?= htmlspecialchars($CommentPostTitle) ?></p>
 		</article>
 	</div>
 

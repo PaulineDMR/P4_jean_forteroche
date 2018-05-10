@@ -17,7 +17,7 @@ ob_start();
 	foreach ($publishedPosts as $value) {
 ?>
 				<tr class="tablerow">
-					<td><?= $value->getTitle(); ?></td>
+					<td><?= htmlspecialchars($value->getTitle()); ?></td>
 					<td>
 						<?php 
 							$postDate = $value->getPost_date();
@@ -52,7 +52,7 @@ ob_start();
 	foreach ($nonPublishedPosts as $value) {
 ?>
 				<tr class="tablerow">
-					<td><?= $value->getTitle(); ?></td>
+					<td><?= htmlspecialchars($value->getTitle()); ?></td>
 					<td>
 						<?php 
 							$postDate = $value->getPost_date();

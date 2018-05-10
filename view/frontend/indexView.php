@@ -13,7 +13,7 @@ foreach ( $resp AS $value ) {
 				<h3><?= htmlspecialchars($value->getTitle()); ?></h3>
 				<p>
 					<?php
-						$date = htmlspecialchars($value->getPublication_date());
+						$date = $value->getPublication_date();
 						$date_fr = new DateTime($date);
 						echo "Publié le " .$date_fr->format('d-m-Y');	
 					?>				

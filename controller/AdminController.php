@@ -6,9 +6,19 @@ class AdminController extends Controller {
 
 	public function admin () {
 		$adminName = $this->getAdminName();
+
 		$lastPost = $this->getLastPost();
+		$lastPostTitle = $lastPost->getTitle();
+		$lastPostPubDateFr = new DateTime($lastPost->getPublication_date());
+
 		$lastComment = $this->getLastComment();
+		$lastCommentAuthor = $lastComment->getAuthor();
+		$LastCommentPubDateFr = new DateTime($lastComment->getComment_date());
+		$lastCommentContent = $lastComment->getComment();
+
+
 		$post = $this->onePost($lastComment->getPost_id());
+		$CommentPostTitle = $post->getTitle();
 
 		require("view/backend/adminView.php");
 	}

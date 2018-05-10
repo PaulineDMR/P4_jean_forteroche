@@ -104,15 +104,9 @@ class Post extends Model {
      * @param [int] $id [post id]
      */
    public function setId($id)
-    {
-        //if (is_numeric($id)) {
+    {  
             $this->id = $id;
             return $this;
-
-        //} else {
-            //throw new Exception("L'identifiant de l'article est invalide");
-            
-        //}
     }
 
     /**
@@ -121,14 +115,8 @@ class Post extends Model {
      */
     public function setPost_date($postDate)
     {
-        //if (is_int("$postDate")) {
             $this->post_date = $postDate;
             return $this;
-
-        //} else {
-            //throw new Exception("La date est invalide");
-            
-        //}
     }
 
     /**
@@ -145,7 +133,6 @@ class Post extends Model {
     		return $this;
     	} else {
     		throw new Exception("Le titre n'est pas valide");
-    		
     	}
     }
 
@@ -196,6 +183,7 @@ class Post extends Model {
 
         return $this;
     }
+
 }
 
 

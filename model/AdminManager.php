@@ -8,7 +8,6 @@ class AdminManager extends Manager {
 	
 	// READ
 	
-	// Get all admins from db
 	public function get_admins() {
 	$db = $this->dbConnect();
 	$resp = $db->query("SELECT id, name, login, password FROM admin ");
@@ -24,7 +23,6 @@ class AdminManager extends Manager {
 		$resp->closeCursor();
 		return $admins;
 	}
-
 	
 	// UPDATE
 	

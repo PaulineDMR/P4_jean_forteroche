@@ -1,7 +1,8 @@
 <?php
-// set class CommentManager extended from Manager
+
 require_once("Manager.php");
 require_once("Comment.php");
+
 
 class CommentManager extends Manager {
 
@@ -115,7 +116,5 @@ class CommentManager extends Manager {
 
 		return $resp;
 	} 
- 
-
-
+	
 }

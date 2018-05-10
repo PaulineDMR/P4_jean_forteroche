@@ -46,22 +46,7 @@
 		foreach ($comments AS $value) {
 			if ($value->getWarning() == true) {
 				echo " ";
-			} elseif ($value->getModerated() == true) {
-			?>
-				<div id="comment-container">
-					<h4>
-						<?php
-							$date = $value->getComment_date();
-							$date_fr = new DateTime($date);
-							echo "Le " .$date_fr->format('d-m-Y à H\hi'). " <span>" .htmlspecialchars($value->getAuthor()). "</span> a écrit";
-						?>
-					</h4>
-
-					<p><?= nl2br(htmlspecialchars($value->getComment())); ?></p>
-				</div>		
-			<?php	
-			}else {
-			?>
+			} else { ?>
 				<div id="comment-container">
 					<h4>
 						<?php
@@ -73,14 +58,18 @@
 
 					<p><?= nl2br(htmlspecialchars($value->getComment())); ?></p>
 
-					<form method="POST" action="index.php?action=warning&amp;id=<?= $post->getId() ?>&amp;commentId=<?= $value->getId(); ?>">
-						<input type="submit" value="Signaler">
-					</form>	
+					<?php if ($value->getModerated() != true) { ?>
+						<form method="POST" action="index.php?action=warning&amp;id=<?= $post->getId() ?>&amp;commentId=<?= $value->getId(); ?>">
+							<input type="submit" value="Signaler">
+						</form>	
+					<?php } ?>
+
 				</div>		
-			<?php	
-			}		
-		}   
-		?>	
+			<?php
+			} 
+		}
+		?>
+
 	
 	</div>
 

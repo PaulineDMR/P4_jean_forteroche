@@ -11,13 +11,7 @@ class Comment extends Model {
     private $warning;
     private $moderated;
 
-	/*
-	function __construct(argument)
-	{
-		# code...
-	}*/
-
-// GETTER
+// GETTERS
 
 	/**
      * @return $id
@@ -72,7 +66,6 @@ class Comment extends Model {
     {
         return $this->moderated;
     }
-
 
 
 //SETTERS
